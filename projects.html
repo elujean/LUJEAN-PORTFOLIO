@@ -1,0 +1,207 @@
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device width, initial-scale=1.0"/>
+    <title>Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          --background: #f5f7f9;
+          --primary: #4a6780;
+          --accent: #9ebc9f; 
+          --text: #2a2a2a;
+          --light: #ffffff;
+        }
+      
+        body {
+          margin: 0;
+          font-family: 'Work Sans', sans-serif; 
+          background-color: var(--background);
+          color: var(--text);
+          padding: 40px;
+        }
+        
+        h1 {
+          font-family: 'DM Serif Text', serif;
+          font-size: 2.5rem;
+          color: var(--primary);
+          margin-bottom: 10px;   
+        }
+      
+        .project-card {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          background-color: var(--light);
+          padding: 20px;
+          margin: 30px 0;
+          border-left: 4px solid var(--accent);
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+          align-items: flex-start;
+        }
+      
+        .project-image {
+          width: 200px;
+          height: 130px;
+          object-fit: cover;
+          border-radius: 6px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+      
+        .project-content {
+          flex: 1;
+          min-width: 250px;
+        }
+      
+        .project-content h2 {
+          margin-top: 0;
+          color: var(--primary);
+          font-size: 1.4rem;
+        }
+      
+        .project-content p {
+          font-size: 1rem;
+          line-height: 1.6;
+          margin: 8px 0;
+        }
+      
+        .project-link {
+          display: inline-block;
+          margin-top: 10px;
+          background-color: var(--button, #5f8670);
+          color: var(--light);
+          padding: 8px 16px;
+          border-radius: 6px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: background-color 0.3s ease;
+        }
+      
+        .project-link:hover {
+          background-color: var(--button-hover, #4a755f);
+        }
+      
+        a.back-link {
+          display: inline-block;
+          margin-top: 30px;
+          color: var(--primary);
+          text-decoration: underline;
+          font-weight: 600;
+        }
+
+  .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--light);
+  padding: 30px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  position: relative;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--primary);
+}
+      </style>
+</head>
+<body>
+    <h1>My Projects</h1>
+
+    <div class="project-card" style="border-left: 6px solid #4a6780;">
+      <img src="assets/hra-pilot-thumbnail.jpg" alt="HRA Notebook Thumbnail" class="project-image">
+      <div class="project-content">
+        <h2>HRA SMS Pilot: Stratification + Visualization</h2>
+        <p>
+          A data-driven outreach strategy for dual-eligible SNP members. This Jupyter notebook scores members using risk and recency, ranks them, and visualizes results using Plotly.
+        </p>
+        <p><strong>Key Features:</strong> Realistic eligibility logic, Python-based scoring, interactive data visualizations.</p>
+        <a href="#" onclick="openModal()" class="project-link">Open Notebook →</a>
+      </div>
+    </div>
+
+    <div id="hraModal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2>HRA SMS Pilot – Interactive Notebook</h2>
+        <p>This notebook shows how scoring logic identifies high-priority members based on age, chronic conditions, and engagement history. It also includes visualizations powered by Plotly.</p>
+        <iframe src="documents/hra_sms_pilot_analysis.html" width="100%" height="600px" style="border:none;"></iframe>
+      </div>
+    </div>
+
+    <div class="project-card">
+        <img src="assets/mock-project.jpg" alt="Denial Workflow Preview" class="project-image">
+    <div class="project-content">
+      <h2>Optimization of Claim Denial Resolution Workflow</h2>
+      <p>Streamlined denial follow-up procedures by auditing CPT/ICD-10 error patterns and automating segments of the revenue cycle process, resulting in improved claim approval rates and faster resolution times.</p>
+      <a href="https://example.com/denial-optimization" target="_blank" class="project-link">View Case Study&#8594;
+    </div>
+  </div>
+
+  <div class="project-card">
+    <img src="assets/mock-project.jpg" alt="Power BI Denial Dashboard" class="project-image">
+    <div class="project-content">
+      <h2>Power BI Dashboard – Denial Pattern Analysis</h2>
+      <p>Built an interactive Power BI dashboard to visualize denial trends by payer, denial code, and provider. The tool empowered leadership to make faster billing decisions and reduced recurring errors.</p>
+      <a href="https://example.com/powerbi-denials" target="_blank" class="project-link">View Case Study →</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <img src="assets/mock-project.jpg" alt="Credentialing Tracker Preview" class="project-image">
+    <div class="project-content">
+      <h2>Credentialing Tracker – Compliance & Onboarding Tool</h2>
+      <p>Created a structured Excel-based credentialing tracker to streamline onboarding, verify state and payer requirements, and flag approaching deadlines. Reduced provider onboarding time by 30%.</p>
+      <a href="https://example.com/credentialing-tracker" target="_blank" class="project-link">View Tool Overview →</a>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <img src="assets/mock-project.jpg" alt="Informatics Proposal Preview" class="project-image">
+    <div class="project-content">
+      <h2>Informatics Proposal – Streamlined Care Coordination</h2>
+      <p>Drafted a multi-departmental proposal to integrate health informatics tools that would automate member risk stratification, reduce manual outreach tasks, and align with STAR measure goals.</p>
+      <a href="https://example.com/informatics-workflow" target="_blank" class="project-link">View Proposal →</a>
+    </div>
+ </div>
+
+
+    <a href="index.html" class="back-link">&#8592; Back to Home</a>
+
+    <script>
+      function openModal() {
+        document.getElementById('hraModal').style.display = 'flex';
+      }
+    
+      function closeModal() {
+        document.getElementById('hraModal').style.display = 'none';
+      }
+    
+      // Optional: Close modal when clicking outside the content box
+      window.onclick = function(event) {
+        const modal = document.getElementById('hraModal');
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      }
+    </script>
+</body>

@@ -1,0 +1,154 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lujean El-Hadri</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --background: #f5f7f9;
+        --primary: #4a6780;
+        --accent: #9ebc9f;
+        --text: #2a2a2a;
+        --light: #ffffff;
+        --button: #5f8670;
+        --button-hover: #4a755f;
+     }
+
+    * {
+        box-sizing: border-box;
+     }
+
+      body {
+        margin: 0;
+        font-family: 'Work Sans', sans-serif;
+        background-color: var(--background);
+        color: var(--text);
+        }
+
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 60px 10%;
+        background-color: var(--light);
+        border-bottom: 4px solid var(--accent);
+    }
+
+    .hero-text {
+        max-width: 50%;
+    }
+
+    h1 {
+        font-family: 'DM Serif Text', serif;
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 10px;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 1.1rem;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: var(--button);
+        color: var(--light);
+        text-decoration: none;
+        border-radius: 6px;
+        margin-top: 25px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: var(--button-hover);
+    }
+
+    .hero-img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid var(--accent);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .section {
+        max-width: 1000px;
+        margin: 60px auto;
+        padding: 40px;
+        background-color: var(--light);
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .section h2 {
+        font-family: 'DM Serif Text', serif;
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+    }
+
+    .section p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    .skills-list {
+        display: grid;
+        grid-template-columns: repeat (auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+        list-style: none;
+        padding-left: 0;
+        margin-top: 20px;
+    }
+    .skills-list li {
+        background-color: var(--background);
+        border-left: 4px solid var(--accent);
+        padding: 10px 15px;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+</style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Lujean El-Hadri</h1>
+            <h2>Healthcare Optimization & Data-Driven Strategy</h2>
+            <p>Welcome to my professional portfolio. I'm a healthcare professional with a passion for streamlining healthcare systems and mastering the tools of digital transformation. My work and this site reflect my hands-on growth in informatics, coding, and analytical thinking. </p>
+            <a href="projects.html" class="btn">Explore My Work</a>
+        </div>
+        <img src="assets/headshot.jpg" alt="Lujean El Hadri Headshot" class="hero-img">
+    </section>
+
+    <section class="section">
+        <h2>About Me</h2>
+        <p>
+            I bring experience in medical billing and coding, claims processing, end-to-end revenue cycle management, and care management. In every position I've held, I’ve contributed to measurable improvements such as reducing claim denials, increasing approval rates, streamlining credentialing workflows, and strengthening revenue outcomes. Throughout my healthcare career, I’ve been naturally drawn to data—whether it was coding a claim or analyzing aging reports. This passion led me to pivot into healthcare data analytics and automation. I'm building new skills from the ground up—this website is just the beginning.
+        </p>
+    </section>
+    
+    <section class="section skills">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li>CPT Codes & ICD-10 Application</li>
+            <li>Credentialing & Compliance</li>
+            <li>Claims Processing & Denial Resolution</li>
+            <li>Data Reporting & Process Optimization</li>
+            <li>Power BI, Excel & Data Analysis</li>
+            <li>Web Development: HTML & CSS</li>
+        </ul>
+    </section>
+</body>
