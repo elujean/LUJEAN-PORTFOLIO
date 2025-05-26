@@ -189,25 +189,51 @@
         </div>
   
         <div id="techTab" class="tab-content">
-          <h2>Technical Breakdown</h2>
-          <p>This simulation was developed using Python (Pandas, Plotly) to:</p>
-          <ul>
-            <li>Clean and normalize mock DSNP member data.</li>
-            <li>Score risk using factors like chronic conditions, age, recency.</li>
-            <li>Stratify members into outreach tiers.</li>
-            <li>Visualize insight via interactive charts.</li>
-          </ul>
-          <pre><code># Scoring logic in sms_scoring.py
-  df['score'] = (
-    (1 / (df['last_hra_days'] + 1)) * 50 +
-    (df['response_history'] * 10) +
-    (df['chronic_conditions'] * 30) +
-    (df['age'] > 75).astype(int) * 15 +
-    (df['dual_eligible'] * 5) +
-    (df['snp_member'] * 10)
-  )
-          </code></pre>
-          <p>This ensures outreach focuses on members overdue for an HRA and at highest clinical/socioeconomic risk.</p>
+          <h2>Technical Breakdown: Member Scoring Logic</h2>
+          <p>The following Python script was used to generate risk scores and SMS eligibility for over 2,000 DSNP members. The logic prioritizes overdue, high-risk, low-engagement individuals for HRA outreach </p>
+
+          <h3>1. Load Cleaned Member Data</h3>
+          <p>Started by importing Pandas and reading the cleaned dataset from <code>clean_sms_data.py</code>.</p>
+          <pre><code>import pandas as pd
+            df = pd.read_csv('data/sms_members_cleaned.csv')
+            </code></pre>
+
+        <h3>2. Score Each Member</h3>
+        <p>This formual assigns a score based on time since the members last HRA, chronic conditions, past engagement, and socioeconomic risk factors. All values are additive.</p>
+        <pre><code>df['score'] = (
+          (1 / (df['last_hra_days'] + 1)) * 50 +         # More recent HRA → lower score
+          (df['response_history'] * 10) +                # Past engagement ↑ score
+          (df['chronic_conditions'] * 30) +              # Each condition adds weight
+          (df['age'] > 75).astype(int) * 15 +            # Elderly flag bonus
+          (df['dual_eligible'] * 5) +                    # Socioeconomic risk
+          (df['snp_member'] * 10)                        # Plan targeting boost
+      )</code></pre>
+
+      <h3>3. Statify by Risk</h3>
+      <p>This splits the population into three tiers using quantile bins (equal-sized groups):</p>
+      <pre><code>df['risk_tier'] = pd.qcut(df['score'], q=3, labels=['Low', 'Medium', 'High'])
+      </code></pre>
+
+      <h3>4. Flag Members for SMS Outreach</h3>
+      <p>This logic identifies high-priority members based on a blend of risk, plan statuse, and timing.</p>
+      <pre><code>df['eligible_for_sms'] = (
+        (df['snp_member'] == 1) &
+        (df['dual_eligible'] == 1) &
+        (df['last_hra_days'] > 100) &
+        (df['response_history'] <= 2) &
+        (df['age'] >= 65) &
+        (df['chronic_conditions'] >= 2)
+    )
+    </code></pre>
+
+    <h3>5. Rank Members and Save Output</h3>
+    <p>The members are sorted by score (descending) and saved as a ranked file for visualization and outreach planning.</p>
+    <pre><code>df = df.sort_values(by='score', ascending=False)
+      df.to_csv('data/sms_outreach_ranked.csv', index=False)
+      </code></pre>
+
+      <p> This scoring engine powers the interactive plots shown in the Overview tab, ensuring every visual is grounded in real targeting logic.</p>
+
         </div>
       </div>
     </div>
