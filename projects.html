@@ -176,23 +176,34 @@
         </div>
   
         <div id="overviewTab" class="tab-content active-tab">
-          <h2>HRA SMS Pilot – Overview</h2>
-          <p>This pilot uses a realistic clinical scoring algorithm to prioritize outreach to high-risk, low-engagement Dual-SNP members.</p>
+          <h2>HRA SMS Pilot – Strategic Overview</h2>
+          <p>This simulation demonstrates how data-driven SMS outreach can increase HRA completion among high-risk, low-engagement Duel-Eligible Special Needs Plan (DSNAP) members. By focusing on members that are most likely to benefit, this approach improves STARS ratings, optimizes care coordination, and enhances the ROI for outreach initiatives.</p>
+         
+          <h3>Targeting Strategy:</h3>
           <ul>
-            <li><strong>Problem:</strong> Low HRA completion rates among vulnerable members.</li>
-            <li><strong>Goal:</strong> Improve STARS rating via predictive segmentation and automated outreach.</li>
-            <li><strong>Result:</strong> ~30% more high-risk members targeted than with random outreach.</li>
+            <li><strong>Recency:</strong> Members who haven’t completed an HRA in 100+ days</li>
+            <li><strong>Risk:</strong> Elevated age, chronic conditions, dual eligibility</li>
+            <li><strong>Engagement:</strong> Low past response to campaigns</li>
           </ul>
-          <iframe src="documents/hra_sms_pilot_analysis.html" width="100%" height="500px" style="border:none;">
+         
+          <h3>Key Visuals:</h3>
+            <p><strong>1. Risk Tier Distribution:</strong> Shows how eligible members are stratified into Low, Medium, and High tiers. This helps prioritize high-impact outreach.</p>
+            <p><strong>2. Score Distribution:</strong> Displays how risk scores vary within each tier. Higher scores suggest urgency and higher expected ROI for outreach.</p>
+            <p><strong>3. Demographics by Tier:</strong> Compares average age and chronic condition count across risk levels to validate stratification logic.</p>
+
+         <h3> Takeaway:</h3>
+         <p>Compared to generalized campaings, this approach targets roughly 30% more high-risk members, streamlining resource allocation and improving clinical outcomes. It is scalable, measurable, and aligned with CMS quality incentives.</p>
+
+            <iframe src="documents/hra_sms_pilot_analysis.html" width="100%" height="500px" style="border:none;">
             Your browser does not support iframes.
           </iframe>
         </div>
   
         <div id="techTab" class="tab-content">
           <h2>Technical Breakdown: Member Scoring Logic</h2>
-          <p>The following Python script was used to generate risk scores and SMS eligibility for over 2,000 DSNP members. The logic prioritizes overdue, high-risk, low-engagement individuals for HRA outreach </p>
+          <p> This analysis simulates a SMS outreach campaign aimed at increasing Health Risk Assessment (HRA) completions among DSNP members. Stratified scoring was used to identify high-priority members and explore demographic insights that could inform targeted communication strategies.</p>
 
-          <h3>1. Load Cleaned Member Data</h3>
+          <h3>1. Load Required Libraries</h3>
           <p>Started by importing Pandas and reading the cleaned dataset from <code>clean_sms_data.py</code>.</p>
           <pre><code>import pandas as pd
             df = pd.read_csv('data/sms_members_cleaned.csv')
