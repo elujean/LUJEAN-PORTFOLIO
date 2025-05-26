@@ -114,6 +114,36 @@
   overflow-y: auto;
 }
 
+.tab-buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  background: var(--background);
+  border: 2px solid var(--accent);
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 6px 6px 0 0;
+  margin-right: 8px;
+}
+
+.tab-btn.active {
+  background: var(--light);
+  border-bottom: none;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active-tab {
+  display: block;
+}
+
 .close-modal {
   position: absolute;
   top: 15px;
@@ -131,24 +161,98 @@
       <img src="assets/hra-pilot-thumbnail.jpg" alt="HRA Notebook Thumbnail" class="project-image">
       <div class="project-content">
         <h2>HRA SMS Pilot: Stratification + Visualization</h2>
-        <p>
-          A data-driven outreach strategy for dual-eligible SNP members. This Jupyter notebook scores members using risk and recency, ranks them, and visualizes results using Plotly.
-        </p>
+        <p>A data-driven outreach strategy for dual-eligible SNP members. This Jupyter notebook scores members using risk and recency, ranks them, and visualizes results using Plotly.</p>
         <p><strong>Key Features:</strong> Realistic eligibility logic, Python-based scoring, interactive data visualizations.</p>
         <a href="#" onclick="openModal()" class="project-link">Open Notebook →</a>
       </div>
     </div>
-
+  
     <div id="hraModal" class="modal-overlay">
       <div class="modal-content">
         <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h2>HRA SMS Pilot – Interactive Notebook</h2>
-        <p>This notebook shows how scoring logic identifies high-priority members based on age, chronic conditions, and engagement history. It also includes visualizations powered by Plotly.</p>
-        <iframe src="documents/hra_sms_pilot_analysis.html" width="100%" height="600px" style="border:none;"></iframe>
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="showTab('overviewTab')">Overview</button>
+          <button class="tab-btn" onclick="showTab('techTab')">Technical Breakdown</button>
+        </div>
+  
+        <div id="overviewTab" class="tab-content active-tab">
+          <h2>HRA SMS Pilot – Overview</h2>
+          <p>This pilot uses a realistic clinical scoring algorithm to prioritize outreach to high-risk, low-engagement Dual-SNP members.</p>
+          <ul>
+            <li><strong>Problem:</strong> Low HRA completion rates among vulnerable members.</li>
+            <li><strong>Goal:</strong> Improve STARS rating via predictive segmentation and automated outreach.</li>
+            <li><strong>Result:</strong> ~30% more high-risk members targeted than with random outreach.</li>
+          </ul>
+          <iframe src="documents/hra_sms_pilot_analysis.html" width="100%" height="500px" style="border:none;">
+            Your browser does not support iframes.
+          </iframe>
+        </div>
+  
+        <div id="techTab" class="tab-content">
+          <h2>Technical Breakdown</h2>
+          <p>This simulation was developed using Python (Pandas, Plotly) to:</p>
+          <ul>
+            <li>Clean and normalize mock DSNP member data.</li>
+            <li>Score risk using factors like chronic conditions, age, recency.</li>
+            <li>Stratify members into outreach tiers.</li>
+            <li>Visualize insight via interactive charts.</li>
+          </ul>
+          <pre><code># Scoring logic in sms_scoring.py
+  df['score'] = (
+    (1 / (df['last_hra_days'] + 1)) * 50 +
+    (df['response_history'] * 10) +
+    (df['chronic_conditions'] * 30) +
+    (df['age'] > 75).astype(int) * 15 +
+    (df['dual_eligible'] * 5) +
+    (df['snp_member'] * 10)
+  )
+          </code></pre>
+          <p>This ensures outreach focuses on members overdue for an HRA and at highest clinical/socioeconomic risk.</p>
+        </div>
       </div>
     </div>
-
-    <div class="project-card">
+  
+    <a href="index.html" class="back-link">&#8592; Back to Home</a>
+  
+    <script>
+      function openModal() {
+        document.getElementById('hraModal').style.display = 'flex';
+      }
+  
+      function closeModal() {
+        document.getElementById('hraModal').style.display = 'none';
+      }
+  
+      function showTab(tabId) {
+        const allTabs = document.querySelectorAll('.tab-content');
+        const allButtons = document.querySelectorAll('.tab-btn');
+  
+        allTabs.forEach(tab => tab.classList.remove('active-tab'));
+        allButtons.forEach(btn => btn.classList.remove('active'));
+  
+        document.getElementById(tabId).classList.add('active-tab');
+        event.currentTarget.classList.add('active');
+      }
+  
+      document.addEventListener('DOMContentLoaded', () => {
+        showTab('overviewTab');
+      });
+  
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeModal();
+        }
+      });
+  
+      window.onclick = function(event) {
+        const modal = document.getElementById('hraModal');
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      };
+    </script>
+   
+<div class="project-card">
         <img src="assets/mock-project.jpg" alt="Denial Workflow Preview" class="project-image">
     <div class="project-content">
       <h2>Optimization of Claim Denial Resolution Workflow</h2>
@@ -184,24 +288,4 @@
     </div>
  </div>
 
-
-    <a href="index.html" class="back-link">&#8592; Back to Home</a>
-
-    <script>
-      function openModal() {
-        document.getElementById('hraModal').style.display = 'flex';
-      }
-    
-      function closeModal() {
-        document.getElementById('hraModal').style.display = 'none';
-      }
-    
-      // Optional: Close modal when clicking outside the content box
-      window.onclick = function(event) {
-        const modal = document.getElementById('hraModal');
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
-      }
-    </script>
 </body>
