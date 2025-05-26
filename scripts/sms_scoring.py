@@ -41,20 +41,20 @@ if __name__ == '__main__':
     print("\nTotal members by risk tier (entire dataset):")
     print(df['risk_tier'].value_counts())
     
-    print("\nStrictly eligible members:", len(strict_eligible))
-    print(strict_eligible['risk_tier']).value_counts()
+    print("\nStrictly eligible members:", len(eligible))
+    print(eligible['risk_tier']).value_counts()
 
     print("\nTier-based eligible members:", len(tier_based_eligible))
     print(tier_based_eligible['risk_tier'].value_counts())
 
     print("\nScoring summary for strictly eligible members:")
-    print("Average score:", round(strict_eligible['score'].mean(), 2))
+    print("Average score:", round(eligible['score'].mean(), 2))
 
     print("\n Scoring complete. Summary of SMS pilot-eligible segment:")
     print("Total eligible members", len(eligible))
     print("Average score:", round(eligible['score'].mean(), 2))
     print("Risk tier breakdown:")
-    print(strict_eligible['risk_tier'].value_counts())
+    print(eligible['risk_tier'].value_counts())
 
     # Step 8: Group profile summary
     group_summary = eligible.groupby('risk_tier')[['age', 'chronic_conditions', 'last_hra_days']].mean().round(1)
