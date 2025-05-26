@@ -194,11 +194,10 @@
          <h3> Takeaway:</h3>
          <p>Compared to generalized campaings, this approach targets roughly 30% more high-risk members, streamlining resource allocation and improving clinical outcomes. It is scalable, measurable, and aligned with CMS quality incentives.</p>
 
-            <iframe src="documents/hra_sms_pilot_analysis.html" width="100%" height="500px" style="border:none;">
-            Your browser does not support iframes.
-          </iframe>
+         <iframe id="hraNotebook" src="documents/hra_sms_pilot_analysis.html" width="100%" height="500px" style="border:none;"></iframe>
+
         </div>
-  
+
         <div id="techTab" class="tab-content">
           <h2>Technical Breakdown: Member Scoring Logic</h2>
           <p> This analysis simulates a SMS outreach campaign aimed at increasing Health Risk Assessment (HRA) completions among DSNP members. Stratified scoring was used to identify high-priority members and explore demographic insights that could inform targeted communication strategies.</p>
@@ -287,6 +286,26 @@
         }
       };
     </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.querySelector('#hraModal iframe');
+
+    if (iframe) {
+      iframe.onload = () => {
+        try {
+          const notebookDoc = iframe.contentDocument || iframe.iframewindow.document;
+          const codeCells = notebookDoc.querySelectorAll('div.imput, jp-CodeCe;;');
+          codeCells.forEach(cell => {
+            cell.style.display = 'none';
+          });
+        } catch (err) {
+          console.error('Error accessing iframe contents:', err);
+        }
+        };
+      }
+    });
+</script>
    
 <div class="project-card">
         <img src="assets/mock-project.jpg" alt="Denial Workflow Preview" class="project-image">
