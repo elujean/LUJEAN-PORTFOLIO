@@ -305,6 +305,20 @@
         };
       }
     });
+
+    document.getElementById("hraNotebook").addEventListener("load", function () {
+    const iframe = this;
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    if (!iframeDoc) return;
+
+    // Hide all input code cells in the notebook
+    const codeBlocks = iframeDoc.querySelectorAll('.jp-Cell-inputWrapper, .input, .prompt');
+
+    codeBlocks.forEach(el => {
+      el.style.display = "none";
+    });
+  });
 </script>
    
 <div class="project-card">
