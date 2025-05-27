@@ -312,13 +312,29 @@
 
     if (!iframeDoc) return;
 
-    // Hide all input code cells in the notebook
     const codeBlocks = iframeDoc.querySelectorAll('.jp-Cell-inputWrapper, .input, .prompt');
 
     codeBlocks.forEach(el => {
       el.style.display = "none";
     });
   });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const iframe = document.getElementById("hraNotebook");
+  iframe.onload = function () {
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    const cells = iframeDoc.querySelectorAll("div.output_subarea pre");
+
+    cells.forEach((cell) => {
+      if (cell.textContent.includes("Dataset shape")) {
+        cell.closest('.output').style.display = "none";
+      }
+    });
+  };
+});
 </script>
    
 <div class="project-card">
