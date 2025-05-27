@@ -247,6 +247,95 @@
         </div>
       </div>
     </div>
+
+  
+    <script>
+      function openModal() {
+        document.getElementById('hraModal').style.display = 'flex';
+      }
+  
+      function closeModal() {
+        document.getElementById('hraModal').style.display = 'none';
+      }
+  
+      function showTab(tabId) {
+        const allTabs = document.querySelectorAll('.tab-content');
+        const allButtons = document.querySelectorAll('.tab-btn');
+  
+        allTabs.forEach(tab => tab.classList.remove('active-tab'));
+        allButtons.forEach(btn => btn.classList.remove('active'));
+  
+        document.getElementById(tabId).classList.add('active-tab');
+        event.currentTarget.classList.add('active');
+      }
+  
+      document.addEventListener('DOMContentLoaded', () => {
+        showTab('overviewTab');
+      });
+  
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeModal();
+        }
+      });
+  
+      window.onclick = function(event) {
+        const modal = document.getElementById('hraModal');
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      };
+    </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.querySelector('#hraModal iframe');
+
+    if (iframe) {
+      iframe.onload = () => {
+        try {
+          const notebookDoc = iframe.contentDocument || iframe.iframewindow.document;
+          const codeCells = notebookDoc.querySelectorAll('div.imput, jp-CodeCe;;');
+          codeCells.forEach(cell => {
+            cell.style.display = 'none';
+          });
+        } catch (err) {
+          console.error('Error accessing iframe contents:', err);
+        }
+        };
+      }
+    });
+
+    document.getElementById("hraNotebook").addEventListener("load", function () {
+    const iframe = this;
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    if (!iframeDoc) return;
+
+    const codeBlocks = iframeDoc.querySelectorAll('.jp-Cell-inputWrapper, .input, .prompt');
+
+    codeBlocks.forEach(el => {
+      el.style.display = "none";
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const iframe = document.getElementById("hraNotebook");
+  iframe.onload = function () {
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    const cells = iframeDoc.querySelectorAll("div.output_subarea pre");
+
+    cells.forEach((cell) => {
+      if (cell.textContent.includes("Dataset shape")) {
+        cell.closest('.output').style.display = "none";
+      }
+    });
+  };
+});
+</script>
    
 <div class="project-card">
         <img src="assets/mock-project.jpg" alt="Denial Workflow Preview" class="project-image">
@@ -286,64 +375,5 @@
 
  <a href="index.html" class="back-link">&#8592; Back to Home</a>
 
- <script>
-  function openModal() {
-    document.getElementById('hraModal').style.display = 'flex';
-  }
-
-  function closeModal() {
-    document.getElementById('hraModal').style.display = 'none';
-  }
-
-  function showTab(tabId) {
-    const allTabs = document.querySelectorAll('.tab-content');
-    const allButtons = document.querySelectorAll('.tab-btn');
-
-    allTabs.forEach(tab => tab.classList.remove('active-tab'));
-    allButtons.forEach(btn => btn.classList.remove('active'));
-
-    document.getElementById(tabId).classList.add('active-tab');
-    event.currentTarget.classList.add('active');
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    showTab('overviewTab');
-
-    const iframe = document.getElementById("hraNotebook");
-
-    iframe.addEventListener("load", function () {
-      try {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-        // Hide dataset preview output cells
-        const outputs = iframeDoc.querySelectorAll("div.output_subarea pre");
-        outputs.forEach((cell) => {
-          if (cell.textContent.includes("Dataset shape")) {
-            cell.closest(".output")?.style?.setProperty("display", "none");
-          }
-        });
-
-        // Optionally hide all code blocks (advanced)
-        const codeBlocks = iframeDoc.querySelectorAll('.jp-Cell-inputWrapper, .input, .prompt');
-        codeBlocks.forEach(el => el.style.display = "none");
-
-      } catch (err) {
-        console.error("Cross-origin issue or iframe access blocked", err);
-      }
-    });
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    });
-
-    window.onclick = function(event) {
-      const modal = document.getElementById('hraModal');
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    };
-  });
-</script>
+ 
 </body>
