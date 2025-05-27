@@ -264,15 +264,6 @@
           block.style.display = 'none';
         });
 
-        // Hide specific outputs (e.g., dataset shape)
-        const outputs = iframeDoc.querySelectorAll("div.output_subarea pre");
-        outputs.forEach(output => {
-          if (output.textContent.toLowerCase().includes("dataset shape")) {
-            const container = output.closest(".output") || output.closest("div");
-            if (container) container.style.display = "none";
-          }
-        });
-
       } catch (err) {
         console.error("Notebook access error:", err);
       }
