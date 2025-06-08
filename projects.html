@@ -157,28 +157,29 @@
 <body>
     <h1>My Projects</h1>
 
-    <div class="project-card" style="border-left: 6px solid #4a6780;">
-      <img src="assets/hra-pilot-thumbnail.jpg" alt="HRA Notebook Thumbnail" class="project-image">
-      <div class="project-content">
-        <h2>HRA SMS Pilot: Stratification + Visualization</h2>
-        <p>A data-driven outreach strategy for dual-eligible SNP members. This Jupyter notebook scores members using risk and recency, ranks them, and visualizes results using Plotly.</p>
-        <p><strong>Key Features:</strong> Realistic eligibility logic, Python-based scoring, interactive data visualizations.</p>
-        <a href="#" onclick="openModal()" class="project-link">Open Notebook →</a>
-      </div>
-    </div>
+   <div class="project-card" style="border-left: 6px solid #4a6780;">
+  <img src="assets/hra-pilot-thumbnail.jpg" alt="HRA Notebook Thumbnail" class="project-image">
+  <div class="project-content">
+    <h2>HRA SMS Pilot: Stratification + Visualization</h2>
+    <p>A data-driven outreach strategy for dual-eligible SNP members. This Jupyter notebook scores members using risk and recency, ranks them, and visualizes results using Plotly.</p>
+    <p><strong>Key Features:</strong> Realistic eligibility logic, Python-based scoring, interactive data visualizations.</p>
+    <a href="#" onclick="openModal()" class="project-link">Open Notebook →</a>
+  </div>
+</div>
   
     <div id="hraModal" class="modal-overlay">
       <div class="modal-content">
         <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div class="tab-buttons">
-          <button class="tab-btn active" onclick="showTab('overviewTab')">Overview</button>
-          <button class="tab-btn" onclick="showTab('techTab')">Technical Breakdown</button>
-        </div>
-  
-        <div id="overviewTab" class="tab-content active-tab">
+
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="showTab('overviewTab')">Overview</button>
+      <button class="tab-btn" onclick="showTab('techTab')">Technical Breakdown</button>
+    </div>
+
+    <div id="overviewTab" class="tab-content active-tab">
           <h2>HRA SMS Pilot – Strategic Overview</h2>
           <p>This simulation demonstrates how data-driven SMS outreach can increase HRA completion among high-risk, low-engagement Duel-Eligible Special Needs Plan (DSNAP) members. By focusing on members that are most likely to benefit, this approach improves STARS ratings, optimizes care coordination, and enhances the ROI for outreach initiatives.</p>
-         
+
           <h3>Targeting Strategy:</h3>
           <ul>
             <li><strong>Recency:</strong> Members who haven’t completed an HRA in 100+ days</li>
@@ -187,15 +188,16 @@
           </ul>
          
           <h3>Key Visuals:</h3>
+          <h3>Key Visuals:</h3>
+      <iframe id="hraNotebook" src="documents/hra_sms_pilot_analysis.html" width="100%" height="600px" style="border:none;"></iframe>
+           
+      <h3>Visual Interpretation:</h3>
             <p><strong>1. Risk Tier Distribution:</strong> Shows how eligible members are stratified into Low, Medium, and High tiers. This helps prioritize high-impact outreach.</p>
             <p><strong>2. Score Distribution:</strong> Displays how risk scores vary within each tier. Higher scores suggest urgency and higher expected ROI for outreach.</p>
             <p><strong>3. Demographics by Tier:</strong> Compares average age and chronic condition count across risk levels to validate stratification logic.</p>
 
          <h3> Takeaway:</h3>
          <p>Compared to generalized campaings, this approach targets roughly 30% more high-risk members, streamlining resource allocation and improving clinical outcomes. It is scalable, measurable, and aligned with CMS quality incentives.</p>
-
-         <iframe id="hraNotebook" src="documents/hra_sms_pilot_analysis.html" width="100%" height="500px" style="border:none;"></iframe>
-
         </div>
 
         <div id="techTab" class="tab-content">
@@ -283,6 +285,21 @@
       <a href="https://example.com/informatics-workflow" target="_blank" class="project-link">View Proposal →</a>
     </div>
  </div>
+
+<script>
+  function openModal() {
+    document.getElementById("hraModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("hraModal").style.display = "none";
+  }
+
+  function showTab(tabId) {
+    document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active-tab"));
+    document.getElementById(tabId).classList.add("active-tab");
+  }
+</script>
 
  <a href="index.html" class="back-link">&#8592; Back to Home</a>
 
