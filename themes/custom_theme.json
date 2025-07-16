@@ -1,0 +1,43 @@
+{
+  "name": "D-SNP Strategic Outreach",
+  "dataColors": ["#2563eb", "#06b6d4", "#64748b"],
+  "background": "#ffffff",
+  "foreground": "#1e293b",
+  "tableAccent": "#2563eb",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "color": [ { "solid": { "color": "#1e293b" } } ],
+        "labelColor": [ { "solid": { "color": "#1e293b" } } ]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "gridVertical": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#e5e7eb" } }
+          }
+        ],
+        "outlineColor": [ { "solid": { "color": "#d1d5db" } } ],
+        "outlineWeight": [0.5],
+        "textSize": [11]
+      }
+    },
+    "card": {
+      "*": {
+        "labelColor": [ { "solid": { "color": "#1e293b" } } ],
+        "textSize": [12]
+      }
+    },
+    "multiRowCard": {
+      "*": {
+        "labelColor": [ { "solid": { "color": "#1e293b" } } ],
+        "textSize": [12]
+      }
+    }
+  }
+}
+
+
+
