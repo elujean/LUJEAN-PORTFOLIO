@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .project-card {
+    @apply bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 shadow-lg transition duration-300 hover:shadow-2xl;
+  }
+
+  .kpi-tile {
+    @apply bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center shadow-md;
+  }
+}
