@@ -107,5 +107,46 @@
     <script>
       lucide.createIcons();
     </script>
-  </body
+
+<!-- Modal Content Wrapper -->
+<div class="modal-content">
+  <span class="close-modal" onclick="closeModal()">&times;</span>
+
+  <!-- Carousel Container -->
+  <div id="caseStudyCarousel" class="carousel-container relative">
+    
+    <!-- Carousel Slide 1: KPI Card -->
+    <div class="carousel-slide active">
+      <h2 class="text-xl font-bold">HRA SMS Pilot – Key Highlights</h2>
+      <div class="kpi-card-grid">
+        <div class="kpi-item">
+          <p class="kpi-label">Total Eligible Members</p>
+          <p class="kpi-value">2,340</p>
+        </div>
+        <div class="kpi-item">
+          <p class="kpi-label">Avg. Outreach Score</p>
+          <p class="kpi-value">72.4</p>
+        </div>
+        <!-- Add more KPI items as needed -->
+      </div>
+    </div>
+
+    <!-- Carousel Slide 2: Power BI Dashboard -->
+    <div class="carousel-slide hidden">
+      <h2 class="text-xl font-bold">Power BI Dashboard</h2>
+      <iframe src="link-to-your-powerbi-dashboard" width="100%" height="450"></iframe>
+    </div>
+
+    <!-- Carousel Slide 3: Jupyter Notebook -->
+    <div class="carousel-slide hidden">
+      <h2 class="text-xl font-bold">Technical Breakdown</h2>
+      <iframe src="documents/hra_sms_pilot_analysis.html" width="100%" height="500"></iframe>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between mt-4">
+      <button onclick="prevSlide()" class="nav-btn">Previous</button>
+      <button onclick="nextSlide()" class="nav-btn">Next</button>
+    </div>
+  </body>
 

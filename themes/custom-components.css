@@ -11,3 +11,24 @@
     @apply bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center shadow-md;
   }
 }
+.carousel-slide { display: none; }
+.carousel-slide.active { display: block; }
+.kpi-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.kpi-item {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.nav-btn {
+  background: #4a6780;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
