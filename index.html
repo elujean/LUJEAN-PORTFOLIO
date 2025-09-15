@@ -1,154 +1,160 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lujean El-Hadri | Digital Portfolio</title>
+
+    <!-- Icons + Tailwind -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Libre+Baskerville&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
 
+    <!-- Softer Font Pairing -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Merriweather+Sans:wght@500;600&family=Source+Sans+Pro:wght@400;500&display=swap" rel="stylesheet">
   </head>
 
-  <body> 
+  <body class="min-h-screen overflow-x-hidden bg-gradient-to-t from-slate-100 via-indigo-100 to-slate-50 to-slate-50 to-blue-100 text-slate-900 relative">
+    <!-- Background -->
+    <div class="absolute inset-0 w-full h-full bg-[url('assets/Background5.jpg')] bg-cover bg-center bg-fixed opacity-50 mix-blend-overlay -z-10"></div>
 
-    <body class="min-h-screen overflow-x-hidden bg-gradient-to-b from-sky-200 via-indigo-200 to-blue-300 text-slate-900 relative">
-  <div class="absolute inset-0 min-h-full w-full bg-[url('assets/Background5.jpg')] bg-cover bg-center bg-fixed opacity-50 mix-blend-overlay -z-10"></div>
+    <!-- Main container -->
+    <main class="mx-auto max-w-6xl px-6 md:px-12">
 
+      <!-- Headshot -->
+      <section class="pt-10 md:pt-14 text-center">
+        <div class="mx-auto w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden ring-4 ring-sky-400/70 shadow-xl">
+          <img src="assets/headshot.jpg" alt="Headshot of Lujean El-Hadri" class="w-full h-full object-cover" />
+        </div>
+      </section>
 
-<!-- Headshot -->
-    <div class="absolute top-4 right-4 w-24 h-24 xl:top-6 xl:right-6 xl:w-44 xl:h-44 rounded-full overflow-hidden border border-sky-500 shadow-xl z-20">
-      <img src="assets/headshot.jpg" alt="Lujean El-Hadri Headshot" class="w-full h-full object-cover" />
-    </div>
-    </div>
-    
-    <!-- Hero Section -->
-    <section class="relative flex flex-col md:flex-row items-center md:items-start justify-between gap-8 px-6 md:px-12 py-20">
-      <div class="hero-content max-w-xl text-center md:text-left space-y-1">
-        <h1 class="text-4xl md:text-6xl font-bold text-slate-950" style="font-family: 'Saira Semi Condensed', sans-serif;">
+      <!-- Hero -->
+      <section class="text-center pt-6 md:pt-8 pb-12">
+        <h1 class="text-4xl md:text-6xl font-bold text-indigo-900 tracking-tight" style="font-family: 'Poppins', sans-serif;">
           Lujean El-Hadri
         </h1>
-        <h2 class="text-lg md:text-lg text-sky-900 font-bold tracking-wide uppercase" style="font-family: 'Titillium Web', sans-serif;">
-          Healthcare Optimization and Data-Driven Strategy
+        <h2 class="mt-3 text-base md:text-lg text-sky-700 font-semibold uppercase tracking-wide" style="font-family: 'Merriweather Sans', sans-serif;">
+          Where healthcare meets analytics: building smarter systems, one insight at a time.
         </h2>
-        <p class="text-base md:text-md text-blue-950 leading-relaxed" style="font-family: 'Work Sans', sans-serif;">
-          I'm Lujean — a healthcare professional turned tech-driven problem solver. This portfolio reflects my journey from managing claims to building smarter, data-informed solutions that improve how care is delivered.
+        <p class="mt-3 max-w-3xl mx-auto text-base md:text-lg text-slate-800 leading-relaxed" style="font-family: 'Source Sans Pro', sans-serif;">
+          Every dataset tells a story — mine is about turning healthcare challenges into opportunities for better care.
         </p>
-        <a href="#projects" class="inline-block px-6 py-3 bg-blue-400 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 transition duration-300">
+        <a href="#projects" class="mt-6 inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 hover:scale-105 transition duration-300">
           Explore My Work
         </a>
-      </div>
-    </section>
+      </section>
 
- <!-- About Section -->
-    <section id="about" class="relative py-20 px-6 md:px-12 max-w-5xl mx-auto mt-12 bg-white/20 backdrop-blur-sm rounded-2xl shadow-md border border-white/30">
-      <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4" style="font-family: 'Saira Semi Condensed', sans-serif;">
-        About Me
-      </h2>
-      <p class="text-lg text-slate-800 leading-relaxed" style="font-family: 'Work Sans', sans-serif;">
-        I'm Lujean — a healthcare professional turned tech-driven problem solver. I started my career with a passion for helping people and have evolved into someone who builds smarter, data-informed solutions to improve healthcare operations. This site reflects that journey — and the work I’m doing to merge technology with compassionate care.
-      </p>
-    </section>
-</section>
+      <!-- Divider -->
+      <div class="border-t border-white/40 max-w-4xl mx-auto"></div>
 
-    <!-- Projects Section -->
-<section id="projects" class="relative py-20 px-6 md:px-12 max-w-6xl mx-auto mt-12">
-  <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-12" style="font-family: 'Saira Semi Condensed', sans-serif;">
-    Projects
-  </h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    
-    <!-- Project Card: SMS Campaign -->
-    <a href="#sms-case-study" class="block bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 shadow-lg hover:shadow-2xl transition duration-300">
-      <h3 class="text-2xl font-semibold text-sky-800 mb-2" style="font-family: 'Titillium Web', sans-serif;">
-        Mock SMS Outreach Campaign
-      </h3>
-      <p class="text-slate-800 mb-2" style="font-family: 'Work Sans', sans-serif;">
-        A strategic member engagement simulation built to increase HRA completion using automated outreach and predictive logic.
-      </p>
-      <span class="text-blue-600 font-bold">View Case Study →</span>
-    </a>
-
-    <!-- Project Card: AURA (Coming Soon) -->
-    <div class="bg-white/10 backdrop-blur-sd border border-white/30 rounded-xl p-6 shadow-lg opacity-100">
-      <h3 class="text-2xl font-semibold text-gray-500 mb-2" style="font-family: 'Titillium Web', sans-serif;">
-        AURA: AI-Driven Claims Optimizer
-      </h3>
-      <p class="text-gray-500" style="font-family: 'Work Sans', sans-serif;">
-        Coming soon — a mock platform concept that uses natural language processing to pre-scan for claims denials and reduce resubmission time.
-      </p>
-    </div>
-
-    <!-- Project Card: VITALSIGN (Coming Soon) -->
-    <div class="bg-white/10 backdrop-blur-sd border border-white/30 rounded-xl p-6 shadow-lg opacity-100">
-      <h3 class="text-2xl font-semibold text-gray-500 mb-2" style="font-family: 'Titillium Web', sans-serif;">
-        VITALSIGN: Patient Risk Visualization
-      </h3>
-      <p class="text-gray-500" style="font-family: 'Work Sans', sans-serif;">
-        Coming soon — an interactive dashboard that identifies patients at risk using health informatics and encounter data modeling.
-      </p>
-    </div>
-
-  </div>
-</section>
-    </section>
-
-  <!-- Floating Lucide Icon -->
-    <div class="relative group">
-      <i data-lucide="cpu" class="absolute bottom-12 right-12 w-8 h-8 text-cyan-600 opacity-70 blur-sm z-10 group-hover:scale-110 transition-transform duration-300 ease-in-out"></i>
-      <div class="absolute bottom-10 right-10 w-16 h-16 bg-cyan-300 opacity-20 blur-2xl rounded-full group-hover:opacity-40 transition duration-300 -z-10"></div>
-    </div>
-
-    <!-- Lucide Icon Activation -->
-    <script>
-      lucide.createIcons();
-    </script>
-
-<!-- Modal Content Wrapper -->
-<div class="modal-content">
-  <span class="close-modal" onclick="closeModal()">&times;</span>
-
-  <!-- Carousel Container -->
-  <div id="caseStudyCarousel" class="carousel-container relative">
-    
-    <!-- Carousel Slide 1: KPI Card -->
-    <div class="carousel-slide active">
-      <h2 class="text-xl font-bold">HRA SMS Pilot – Key Highlights</h2>
-      <div class="kpi-card-grid">
-        <div class="kpi-item">
-          <p class="kpi-label">Total Eligible Members</p>
-          <p class="kpi-value">2,340</p>
+      <!-- About Me -->
+      <section id="about" class="relative py-14 max-w-4xl mx-auto bg-white/20 backdrop-blur-md rounded-2xl shadow-md border border-white/40 mt-12">
+        <div class="px-6 md:px-10 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-6" style="font-family: 'Poppins', sans-serif;">
+            About Me
+          </h2>
+          <p class="text-lg text-slate-900 leading-relaxed" style="font-family: 'Source Sans Pro', sans-serif;">
+            I’m a healthcare professional who has always been curious about the “why” behind the work. What started with claims, billing, and patient coordination gradually grew into a passion for uncovering patterns, solving problems, and building smarter ways to connect people with care.
+            <br /><br />
+            Over time, I’ve developed a toolkit that blends healthcare know-how with technical skills — from analyzing data in Python and SQL to bringing insights to life in Power BI. Just as important, I’ve learned how to translate those insights into solutions that are practical, scalable, and designed with people in mind.
+            <br /><br />
+            At the core, I believe healthcare is about impact. For me, data isn’t just rows and columns — it’s the story of how we can make systems more efficient, reduce frustration for patients, and give providers better tools to do what they do best. That’s the bridge I’m building: turning healthcare experience and informatics into meaningful change.
+          </p>
         </div>
-        <div class="kpi-item">
-          <p class="kpi-label">Avg. Outreach Score</p>
-          <p class="kpi-value">72.4</p>
+      </section>
+
+      <!-- Divider -->
+      <div class="border-t border-white/40 max-w-5xl mx-auto mt-16"></div>
+
+      <!-- Projects -->
+      <section id="projects" class="relative py-14 md:py-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-10 text-center" style="font-family: 'Poppins', sans-serif;">
+          Projects
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Project Card -->
+          <article class="bg-white/20 backdrop-blur-md border border-white/40 rounded-xl p-6 shadow-lg hover:shadow-2xl hover:scale-[1.02] transition duration-300">
+            <h3 class="text-2xl font-semibold text-sky-800 mb-2" style="font-family: 'Merriweather Sans', sans-serif;">
+              Mock SMS Outreach Campaign
+            </h3>
+            <p class="text-slate-900 mb-4" style="font-family: 'Source Sans Pro', sans-serif;">
+              A strategic member engagement simulation built to increase HRA completion using automated outreach and predictive logic.
+            </p>
+            <button onclick="openModal()" class="w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700 transition" aria-haspopup="dialog" aria-controls="hraModal">
+              View Case Study →
+            </button>
+          </article>
+
+          <!-- Project Card: AURA -->
+          <article class="bg-white/10 backdrop-blur-md border border-white/30 rounded-xl p-6 shadow-lg hover:scale-[1.01] transition">
+            <h3 class="text-2xl font-semibold text-gray-600 mb-2" style="font-family: 'Merriweather Sans', sans-serif;">
+              AURA: AI-Driven Claims Optimizer
+            </h3>
+            <p class="text-gray-600" style="font-family: 'Source Sans Pro', sans-serif;">
+              Coming soon — a mock platform concept that uses natural language processing to pre-scan for claims denials and reduce resubmission time.
+            </p>
+          </article>
+
+          <!-- Project Card: VITALSIGN -->
+          <article class="bg-white/10 backdrop-blur-md border border-white/30 rounded-xl p-6 shadow-lg hover:scale-[1.01] transition">
+            <h3 class="text-2xl font-semibold text-gray-600 mb-2" style="font-family: 'Merriweather Sans', sans-serif;">
+              VITALSIGN: Patient Risk Visualization
+            </h3>
+            <p class="text-gray-600" style="font-family: 'Source Sans Pro', sans-serif;">
+              Coming soon — an interactive dashboard that identifies patients at risk using health informatics and encounter data modeling.
+            </p>
+          </article>
         </div>
-        <!-- Add more KPI items as needed -->
+      </section>
+    </main>
+
+    <!-- Modal (ORIGINAL STRUCTURE RESTORED) -->
+    <div id="hraModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="modal-content bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full relative">
+        <span class="close-modal absolute top-2 right-4 text-2xl cursor-pointer" onclick="closeModal()">&times;</span>
+
+        <!-- Carousel Container -->
+        <div id="caseStudyCarousel" class="carousel-container relative">
+          <!-- Slide 1: KPI Card -->
+          <div class="carousel-slide active">
+            <h2 class="text-xl font-bold mb-4">HRA SMS Pilot – Key Highlights</h2>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white p-4 rounded-lg shadow text-center">
+                <p class="text-sm text-gray-600">Total Eligible Members</p>
+                <p class="text-2xl font-bold text-blue-700">2,340</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow text-center">
+                <p class="text-sm text-gray-600">Avg. Outreach Score</p>
+                <p class="text-2xl font-bold text-blue-700">72.4</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Power BI Dashboard -->
+          <div class="carousel-slide hidden">
+            <h2 class="text-xl font-bold mb-4">Power BI Dashboard</h2>
+            <img src="assets/SMS Outreach BI Dashboard.png" alt="Power BI Dashboard Preview" class="rounded-md shadow-lg border border-gray-300">
+            <p class="text-sm mt-2 text-gray-600">Preview of Power BI dashboard. Interactive view available upon request.</p>
+          </div>
+
+          <!-- Slide 3: Jupyter Notebook -->
+          <div class="carousel-slide hidden">
+            <h2 class="text-xl font-bold mb-4">Technical Breakdown</h2>
+            <iframe src="documents/hra_sms_pilot_analysis.html" class="w-full rounded-md border border-gray-300" height="500"></iframe>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="flex justify-between mt-4">
+            <button onclick="prevSlide()" class="bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700">Previous</button>
+            <button onclick="nextSlide()" class="bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700">Next</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Carousel Slide 2: Power BI Dashboard -->
-    <div class="carousel-slide hidden">
-      <h2 class="text-xl font-bold">Power BI Dashboard</h2>
-      <iframe src="link-to-your-powerbi-dashboard" width="100%" height="450"></iframe>
-    </div>
-
-    <!-- Carousel Slide 3: Jupyter Notebook -->
-    <div class="carousel-slide hidden">
-      <h2 class="text-xl font-bold">Technical Breakdown</h2>
-      <iframe src="documents/hra_sms_pilot_analysis.html" width="100%" height="500"></iframe>
-    </div>
-
-    <!-- Navigation Buttons -->
-    <div class="flex justify-between mt-4">
-      <button onclick="prevSlide()" class="nav-btn">Previous</button>
-      <button onclick="nextSlide()" class="nav-btn">Next</button>
-    </div>
+    <!-- Scripts -->
+    <script>lucide.createIcons();</script>
+    <!-- IMPORTANT: keep this so your original JS controls the modal/carousel -->
     <script src="scripts/carousel.js"></script>
-
   </body>
-
+</html>

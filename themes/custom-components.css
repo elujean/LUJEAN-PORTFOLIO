@@ -11,24 +11,43 @@
     @apply bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center shadow-md;
   }
 }
-.carousel-slide { display: none; }
-.carousel-slide.active { display: block; }
-.kpi-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
+/* Base modal overlay styling */
+.modal {
+  position: fixed;             /* Fixes it relative to viewport */
+  inset: 0;                    /* Full-screen (top:0; right:0; bottom:0; left:0) */
+  display: flex;               /* Centers modal content using flexbox */
+  align-items: center;         /* Vertical centering */
+  justify-content: center;     /* Horizontal centering */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 50;                 /* Stacks above all other elements */
+  transition: opacity 0.3s ease; /* Smooth fade-in/out */
 }
-.kpi-item {
+
+/* Modal content box styling */
+.modal-content {
   background: white;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 51; /* Ensures it's above overlay */
 }
-.nav-btn {
-  background: #4a6780;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+
+/* Hidden utility (used by JS to toggle modal and slides) */
+.hidden {
+  display: none !important; /* Completely removes element from layout */
+}
+
+/* Close button hover effect */
+.close-modal {
   cursor: pointer;
+  font-size: 1.8rem;
+  color: #4b5563; /* Tailwind gray-700 equivalent */
+  transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+  color: #1e3a8a; /* Tailwind blue-900 equivalent */
 }
