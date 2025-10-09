@@ -135,32 +135,33 @@
             <button class="p-2" onclick="document.getElementById('smsModal').close()" aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
           </div>
 
-          <!-- Tabs -->
-          <div class="flex items-center gap-3 mb-4" role="tablist" aria-label="Dashboard access tabs">
-            <button id="tab-interactive" role="tab" aria-selected="true" aria-controls="panel-interactive" class="px-4 py-2 rounded-md bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700">Interactive (Power BI)</button>
-            <button id="tab-pdf" role="tab" aria-selected="false" aria-controls="panel-pdf" class="px-4 py-2 rounded-md bg-white/70 text-indigo-700 font-semibold border border-indigo-200 hover:bg-white">Static (Image)</button>
+          <!-- Tabs (Dashboard vs Notebook) -->
+          <div class="flex items-center gap-3 mb-4" role="tablist" aria-label="Case study tabs">
+            <button id="tab-dashboard" role="tab" aria-selected="true" aria-controls="panel-dashboard" class="px-4 py-2 rounded-md bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700">Dashboard</button>
+            <button id="tab-notebook" role="tab" aria-selected="false" aria-controls="panel-notebook" class="px-4 py-2 rounded-md bg-white/70 text-indigo-700 font-semibold border border-indigo-200 hover:bg-white">Notebook</button>
             <a href="assets/sms-outreach-dashboard.png" download class="ml-auto px-4 py-2 rounded-md bg-slate-100 text-slate-800 border border-slate-300 hover:bg-white" title="Download snapshot">Download</a>
           </div>
 
-          <!-- Panel: Interactive (Power BI) -->
-          <div id="panel-interactive" role="tabpanel" aria-labelledby="tab-interactive">
-            <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg border border-gray-300 ring-4 ring-indigo-200/50">
-              <iframe title="SMS Outreach Dashboard Official" src="https://app.powerbi.com/reportEmbed?reportId=ccf37a01-b06a-48d0-aba7-b2c0039d3cfe&autoAuth=true&ctid=be337e90-9c3f-400f-8844-59f0503ac783" frameborder="0" allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-md"></iframe>
-            </div>
-            <p class="text-sm mt-2 text-gray-600 text-center">If you don’t have Power BI access, switch to the <strong>Static (Image)</strong> tab.</p>
-          </div>
-
-          <!-- Panel: Static snapshot -->
-          <div id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" class="hidden">
-            <div class="rounded-lg overflow-hidden border border-gray-300 bg-white">
+          <!-- Panel: DASHBOARD (static first, then interactive iframe) -->
+          <div id="panel-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
+            <!-- Static snapshot on top -->
+            <div class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft">
               <img src="assets/sms-outreach-dashboard.png" alt="SMS Outreach Dashboard snapshot" class="w-full h-auto" />
             </div>
+            <p class="text-xs mt-2 text-gray-600 text-center">Static snapshot for quick review. Below: interactive Power BI embed.</p>
+
+            <!-- Interactive Power BI iframe below -->
+            <div class="mt-4 relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg border border-gray-300 ring-4 ring-indigo-200/50">
+              <iframe title="SMS Outreach Dashboard Official" src="https://app.powerbi.com/reportEmbed?reportId=ccf37a01-b06a-48d0-aba7-b2c0039d3cfe&autoAuth=true&ctid=be337e90-9c3f-400f-8844-59f0503ac783" frameborder="0" allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-md"></iframe>
+            </div>
           </div>
 
-          <!-- Technical breakdown (notebook export) -->
-          <div class="mt-6">
-            <h4 class="text-silverPink font-semibold mb-2">Technical Breakdown</h4>
-            <iframe src="documents/hra_sms_pilot_analysis.html" class="w-full rounded-md border border-gray-300" height="420"></iframe>
+          <!-- Panel: NOTEBOOK (Jupyter export) -->
+          <div id="panel-notebook" role="tabpanel" aria-labelledby="tab-notebook" class="hidden">
+            <div class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft">
+              <iframe src="documents/hra_sms_pilot_analysis.html" class="w-full" height="520" title="Jupyter Notebook Export"></iframe>
+            </div>
+            <p class="text-xs mt-2 text-gray-600 text-center">Note: This notebook export reflects the latest uploaded HTML in <code>/documents</code>. Share the updated version when ready and I’ll swap it in.</p>
           </div>
         </div>
       </dialog>
@@ -175,35 +176,36 @@
       document.getElementById('y').textContent = new Date().getFullYear();
       lucide.createIcons();
 
-      // Tabs logic for modal
+      // Tabs logic for modal (Dashboard vs Notebook)
       (function () {
-        const tabInteractive = document.getElementById('tab-interactive');
-        const tabPdf = document.getElementById('tab-pdf');
-        const panelInteractive = document.getElementById('panel-interactive');
-        const panelPdf = document.getElementById('panel-pdf');
-        if (!tabInteractive || !tabPdf) return;
+        const tabDash = document.getElementById('tab-dashboard');
+        const tabNote = document.getElementById('tab-notebook');
+        const panelDash = document.getElementById('panel-dashboard');
+        const panelNote = document.getElementById('panel-notebook');
+        if (!tabDash || !tabNote) return;
         function activate(which){
-          const isInteractive = which==='interactive';
-          tabInteractive.setAttribute('aria-selected', isInteractive);
-          tabPdf.setAttribute('aria-selected', !isInteractive);
-          panelInteractive.classList.toggle('hidden', !isInteractive);
-          panelPdf.classList.toggle('hidden', isInteractive);
-          tabInteractive.classList.toggle('bg-indigo-600', isInteractive);
-          tabInteractive.classList.toggle('text-white', isInteractive);
-          tabInteractive.classList.toggle('bg-white/70', !isInteractive);
-          tabInteractive.classList.toggle('text-indigo-700', !isInteractive);
-          tabInteractive.classList.toggle('border', !isInteractive);
-          tabInteractive.classList.toggle('border-indigo-200', !isInteractive);
-          tabPdf.classList.toggle('bg-indigo-600', !isInteractive);
-          tabPdf.classList.toggle('text-white', !isInteractive);
-          tabPdf.classList.toggle('bg-white/70', isInteractive);
-          tabPdf.classList.toggle('text-indigo-700', isInteractive);
-          tabPdf.classList.toggle('border', isInteractive);
-          tabPdf.classList.toggle('border-indigo-200', isInteractive);
+          const isDash = which==='dash';
+          tabDash.setAttribute('aria-selected', isDash);
+          tabNote.setAttribute('aria-selected', !isDash);
+          panelDash.classList.toggle('hidden', !isDash);
+          panelNote.classList.toggle('hidden', isDash);
+          tabDash.classList.toggle('bg-indigo-600', isDash);
+          tabDash.classList.toggle('text-white', isDash);
+          tabDash.classList.toggle('bg-white/70', !isDash);
+          tabDash.classList.toggle('text-indigo-700', !isDash);
+          tabDash.classList.toggle('border', !isDash);
+          tabDash.classList.toggle('border-indigo-200', !isDash);
+          tabNote.classList.toggle('bg-indigo-600', !isDash);
+          tabNote.classList.toggle('text-white', !isDash);
+          tabNote.classList.toggle('bg-white/70', isDash);
+          tabNote.classList.toggle('text-indigo-700', isDash);
+          tabNote.classList.toggle('border', isDash);
+          tabNote.classList.toggle('border-indigo-200', isDash);
         }
-        tabInteractive.addEventListener('click', ()=>activate('interactive'));
-        tabPdf.addEventListener('click', ()=>activate('pdf'));
+        tabDash.addEventListener('click', ()=>activate('dash'));
+        tabNote.addEventListener('click', ()=>activate('note'));
       })();
     </script>
   </body>
 </html>
+
