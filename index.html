@@ -2,159 +2,208 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Lujean El-Hadri | Digital Portfolio</title>
 
-    <!-- Icons + Tailwind -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Softer Font Pairing -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Merriweather+Sans:wght@500;600&family=Source+Sans+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mintCream: "#F7FFF6",
+              morningBlue: "#869F9F",
+              silverPink: "#C9A8A0",
+              americanSilver: "#C6DFCD",
+              alabaster: "#F1F2E4"
+            },
+            boxShadow: { soft: "0 8px 30px rgba(0,0,0,.06)", nav: "0 6px 18px rgba(0,0,0,.08)" },
+            transitionTimingFunction: { smooth: "cubic-bezier(.25,.1,.25,1)" },
+            animation: { fadeUp: 'fadeUp .7s ease-out forwards', fadeIn: 'fadeIn .6s ease-out forwards' }
+          }
+        }
+      };
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800&family=Mulish:wght@400;500;600&family=Abril+Fatface&display=swap" rel="stylesheet">
+    <style>
+      html { scroll-behavior: smooth; }
+      /* Global font -> Heebo */
+      body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea { font-family:'Heebo',sans-serif; }
+      .fogged-glass { background: rgba(255,255,255,.34); backdrop-filter: blur(12px) saturate(150%); border: 1px solid rgba(255,255,255,.28); }
+      .card { background: rgba(255,255,255,.34); backdrop-filter: blur(10px) saturate(140%); border: 1px solid rgba(255,255,255,.25); border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,.06); transition: transform .3s, box-shadow .3s; }
+      .card:hover { transform: translateY(-4px); box-shadow: 0 12px 34px rgba(0,0,0,.08); }
+    </style>
   </head>
 
-  <body class="min-h-screen overflow-x-hidden bg-gradient-to-t from-slate-100 via-indigo-100 to-slate-50 to-slate-50 to-blue-100 text-slate-900 relative">
-    <!-- Background -->
-    <div class="absolute inset-0 w-full h-full bg-[url('assets/Background5.jpg')] bg-cover bg-center bg-fixed opacity-50 mix-blend-overlay -z-10"></div>
-
-    <!-- Main container -->
-    <main class="mx-auto max-w-6xl px-6 md:px-12">
-
-      <!-- Headshot -->
-      <section class="pt-10 md:pt-14 text-center">
-        <div class="mx-auto w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden ring-4 ring-sky-400/70 shadow-xl">
-          <img src="assets/headshot.jpg" alt="Headshot of Lujean El-Hadri" class="w-full h-full object-cover" />
+  <body class="min-h-screen overflow-x-hidden bg-mintCream text-slate-900 relative">
+    <header id="siteHeader" class="sticky top-0 z-50 transition-all duration-300">
+      <nav class="mx-auto max-w-6xl px-5 md:px-8 py-3 flex items-center gap-4">
+        <a href="#home" class="flex items-center gap-2 font-semibold text-slate-900"><i data-lucide="activity" class="w-5 h-5 text-americanSilver"></i><span style="font-family:'Heebo',sans-serif">Lujean El-Hadri</span></a>
+        <div class="ml-auto hidden md:flex items-center gap-6 text-sm font-semibold" style="font-family:'Heebo',sans-serif">
+          <a href="#projects">Projects</a><a href="#whatido">What I Do</a><a href="#about">About</a><a href="#contact">Contact</a>
+          <a id="resumeLink" href="assets/Lujean%20ElHadri.docx" download class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-americanSilver text-slate-800 hover:bg-[#B3D3BF] transition-colors"><i data-lucide="download" class="w-4 h-4"></i> Resume</a>
         </div>
-      </section>
+      </nav>
+    </header>
 
-      <!-- Hero -->
-      <section class="text-center pt-6 md:pt-8 pb-12">
-        <h1 class="text-4xl md:text-6xl font-bold text-indigo-900 tracking-tight" style="font-family: 'Poppins', sans-serif;">
-          Lujean El-Hadri
-        </h1>
-        <h2 class="mt-3 text-base md:text-lg text-sky-700 font-semibold uppercase tracking-wide" style="font-family: 'Merriweather Sans', sans-serif;">
-          Where healthcare meets analytics: building smarter systems, one insight at a time.
-        </h2>
-        <p class="mt-3 max-w-3xl mx-auto text-base md:text-lg text-slate-800 leading-relaxed" style="font-family: 'Source Sans Pro', sans-serif;">
-          Every dataset tells a story — mine is about turning healthcare challenges into opportunities for better care.
-        </p>
-        <a href="#projects" class="mt-6 inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 hover:scale-105 transition duration-300">
-          Explore My Work
-        </a>
-      </section>
-
-      <!-- Divider -->
-      <div class="border-t border-white/40 max-w-4xl mx-auto"></div>
-
-      <!-- About Me -->
-      <section id="about" class="relative py-14 max-w-4xl mx-auto bg-white/20 backdrop-blur-md rounded-2xl shadow-md border border-white/40 mt-12">
-        <div class="px-6 md:px-10 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-6" style="font-family: 'Poppins', sans-serif;">
-            About Me
-          </h2>
-          <p class="text-lg text-slate-900 leading-relaxed" style="font-family: 'Source Sans Pro', sans-serif;">
-            I’m a healthcare professional who has always been curious about the “why” behind the work. What started with claims, billing, and patient coordination gradually grew into a passion for uncovering patterns, solving problems, and building smarter ways to connect people with care.
-            <br /><br />
-            Over time, I’ve developed a toolkit that blends healthcare know-how with technical skills. From analyzing data in Python and SQL to bringing insights to life in Power BI. Just as important, I’ve learned how to translate those insights into solutions that are practical, scalable, and designed with people in mind.
-            <br /><br />
-            At the core, I believe healthcare is about impact. For me, data isn’t just rows and columns, it’s the story of how we can make systems more efficient, reduce frustration for patients, and give providers better tools to do what they do best. That’s the bridge I’m building: turning healthcare experience and informatics into meaningful change.
-          </p>
+    <main id="home" class="mx-auto max-w-6xl px-6 md:px-8">
+      <section class="text-center pt-12 md:pt-16 pb-12">
+        <div class="mx-auto w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-soft">
+          <img src="assets/headshot3.JPG" alt="Headshot of Lujean El-Hadri" class="w-full h-full object-cover" />
         </div>
+        <h1 class="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight text-morningBlue">Lujean El-Hadri</h1>
+        <p class="mt-3 text-sm md:text-[15px] uppercase tracking-[.2em] text-americanSilver font-semibold" style="font-family:'Heebo',sans-serif">Where healthcare meets analytics: building smarter systems, one insight at a time.</p>
+        <p class="mt-4 max-w-3xl mx-auto text-base md:text-lg text-slate-700 leading-relaxed">Every dataset tells a story — mine is about turning challenges into opportunities for better care.</p>
       </section>
 
-      <!-- Divider -->
-      <div class="border-t border-white/40 max-w-5xl mx-auto mt-16"></div>
-
-      <!-- Projects -->
-      <section id="projects" class="relative py-14 md:py-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-10 text-center" style="font-family: 'Poppins', sans-serif;">
-          Projects
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Project Card -->
-          <article class="bg-white/20 backdrop-blur-md border border-white/40 rounded-xl p-6 shadow-lg hover:shadow-2xl hover:scale-[1.02] transition duration-300">
-            <h3 class="text-2xl font-semibold text-sky-800 mb-2" style="font-family: 'Merriweather Sans', sans-serif;">
-              Mock SMS Outreach Campaign
-            </h3>
-            <p class="text-slate-900 mb-4" style="font-family: 'Source Sans Pro', sans-serif;">
-              A strategic member engagement simulation built to increase HRA completion using automated outreach and predictive logic.
-            </p>
-            <button onclick="openModal()" class="w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700 transition" aria-haspopup="dialog" aria-controls="hraModal">
-              View Case Study →
+      <section id="projects" class="mt-16 md:mt-20">
+        <div class="text-center">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-silverPink">Projects</h2>
+          <p class="mt-2 text-slate-600 max-w-3xl mx-auto">Featured BI and analytics work samples.</p>
+        </div>
+        <article class="grid md:grid-cols-2 gap-6 items-center mt-10">
+          <div class="order-2 md:order-1 card p-6">
+            <h3 class="text-2xl font-semibold text-silverPink">SMS Outreach Pilot</h3>
+            <p class="mt-2 text-slate-700 text-sm">Stratified scoring + automated SMS to increase HRA completions. Includes Power BI dashboard and Jupyter notebook breakdown.</p>
+            <button onclick="document.getElementById('smsModal').showModal()" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-md bg-americanSilver text-slate-900 font-semibold hover:bg-[#B3D3BF]">
+              <i data-lucide="play" class="w-4 h-4"></i> View Case Study
             </button>
-          </article>
+          </div>
+          <div class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-soft">
+            <img src="assets/sms-outreach-dashboard.png" alt="SMS Outreach Dashboard" class="w-full h-full object-cover" />
+          </div>
+        </article>
 
-          <!-- Project Card: AURA -->
-          <article class="bg-white/10 backdrop-blur-md border border-white/30 rounded-xl p-6 shadow-lg hover:scale-[1.01] transition">
-            <h3 class="text-2xl font-semibold text-gray-600 mb-2" style="font-family: 'Merriweather Sans', sans-serif;">
-              AURA: AI-Driven Claims Optimizer
-            </h3>
-            <p class="text-gray-600" style="font-family: 'Source Sans Pro', sans-serif;">
-              Coming soon — a mock platform concept that uses natural language processing to pre-scan for claims denials and reduce resubmission time.
-            </p>
-          </article>
+        <!-- AURA Project (coming soon) -->
+        <article class="grid md:grid-cols-2 gap-6 items-center mt-10">
+          <div class="rounded-2xl overflow-hidden shadow-soft order-1">
+            <div class="aspect-video w-full bg-gradient-to-br from-americanSilver/60 to-morningBlue/30 grid place-items-center text-morningBlue">
+              <i data-lucide="scan" class="w-14 h-14"></i>
+            </div>
+          </div>
+          <div class="order-2 card p-6">
+            <h3 class="text-2xl font-semibold text-silverPink">AURA — AI‑Driven Claims Optimizer</h3>
+            <p class="mt-2 text-slate-700 text-sm">Concept prototype that flags likely denials before submission using NLP rules + heuristics. Workflow design and data model are defined; UI and demo in progress.</p>
+            <button disabled class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-md bg-slate-200 text-slate-500 cursor-not-allowed">
+              <i data-lucide="clock" class="w-4 h-4"></i> Demo coming soon
+            </button>
+          </div>
+        </article>
 
-          <!-- Project Card: VITALSIGN -->
-          <article class="bg-white/10 backdrop-blur-md border border-white/30 rounded-xl p-6 shadow-lg hover:scale-[1.01] transition">
-            <h3 class="text-2xl font-semibold text-gray-600 mb-2" style="font-family: 'Merriweather Sans', sans-serif;">
-              VITALSIGN: Patient Risk Visualization
-            </h3>
-            <p class="text-gray-600" style="font-family: 'Source Sans Pro', sans-serif;">
-              Coming soon — an interactive dashboard that identifies patients at risk using health informatics and encounter data modeling.
-            </p>
-          </article>
+        <!-- VITALSIGN Project (coming soon) -->
+        <article class="grid md:grid-cols-2 gap-6 items-center mt-10">
+          <div class="order-2 card p-6">
+            <h3 class="text-2xl font-semibold text-silverPink">VITALSIGN — Patient Risk Visualization</h3>
+            <p class="mt-2 text-slate-700 text-sm">Interactive dashboard concept for identifying rising‑risk members from encounters, gaps, and utilization signals. Feature backlog and design system are scoped.</p>
+            <button disabled class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-md bg-slate-200 text-slate-500 cursor-not-allowed">
+              <i data-lucide="clock" class="w-4 h-4"></i> Preview coming soon
+            </button>
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-soft order-1 md:order-2">
+            <div class="aspect-video w-full bg-gradient-to-br from-silverPink/50 to-amber-100/30 grid place-items-center text-silverPink">
+              <i data-lucide="activity" class="w-14 h-14"></i>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section id="about" class="mt-16 md:mt-20">
+        <div class="card p-10 max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-silverPink">About Me</h2>
+          <p class="mt-4 text-lg text-slate-800 leading-relaxed">Business Intelligence and Healthcare Professional with 8+ years in healthcare administration, claims processing, and care management support. Experienced in SQL, Power BI, RPA tools (Power Automate, Python), and data reporting, with proven ability to integrate multiple data sources, automate workflows, and deliver insights that improve decision-making.</p>
         </div>
       </section>
-    </main>
 
-    <!-- Modal (ORIGINAL STRUCTURE RESTORED) -->
-    <div id="hraModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="modal-content bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full relative">
-        <span class="close-modal absolute top-2 right-4 text-2xl cursor-pointer" onclick="closeModal()">&times;</span>
+      <section id="contact" class="mt-16 md:mt-24 mb-16">
+        <div class="card p-10 text-center">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-silverPink">Let’s Connect</h2>
+          <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="mailto:elujean@gmail.com" class="px-5 py-3 rounded-full bg-americanSilver text-slate-800 font-semibold shadow-soft hover:bg-[#B3D3BF] inline-flex items-center gap-2"><i data-lucide="mail" class="w-5 h-5"></i>Email Me</a>
+            <a href="https://www.linkedin.com/in/lujean-elhadri/" class="px-5 py-3 rounded-full border border-americanSilver/40 text-slate-700 font-semibold hover:bg-white inline-flex items-center gap-2"><i data-lucide="linkedin" class="w-5 h-5"></i>LinkedIn</a>
+          </div>
+        </div>
+      </section>
 
-        <!-- Carousel Container -->
-        <div id="caseStudyCarousel" class="carousel-container relative">
-          <!-- Slide 1: KPI Card -->
-          <div class="carousel-slide active">
-            <h2 class="text-xl font-bold mb-4">HRA SMS Pilot – Key Highlights</h2>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-white p-4 rounded-lg shadow text-center">
-                <p class="text-sm text-gray-600">Total Eligible Members</p>
-                <p class="text-2xl font-bold text-blue-700">2,340</p>
-              </div>
-              <div class="bg-white p-4 rounded-lg shadow text-center">
-                <p class="text-sm text-gray-600">Avg. Outreach Score</p>
-                <p class="text-2xl font-bold text-blue-700">72.4</p>
-              </div>
+      <!-- Modal: SMS Case Study with tabs -->
+      <dialog id="smsModal" class="p-0 rounded-2xl w-11/12 md:w-3/4 max-w-4xl backdrop:bg-black/40">
+        <div class="card p-4 md:p-6 rounded-2xl">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-semibold text-silverPink">SMS Outreach Pilot</h3>
+            <button class="p-2" onclick="document.getElementById('smsModal').close()" aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
+          </div>
+
+          <!-- Tabs -->
+          <div class="flex items-center gap-3 mb-4" role="tablist" aria-label="Dashboard access tabs">
+            <button id="tab-interactive" role="tab" aria-selected="true" aria-controls="panel-interactive" class="px-4 py-2 rounded-md bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700">Interactive (Power BI)</button>
+            <button id="tab-pdf" role="tab" aria-selected="false" aria-controls="panel-pdf" class="px-4 py-2 rounded-md bg-white/70 text-indigo-700 font-semibold border border-indigo-200 hover:bg-white">Static (Image)</button>
+            <a href="assets/sms-outreach-dashboard.png" download class="ml-auto px-4 py-2 rounded-md bg-slate-100 text-slate-800 border border-slate-300 hover:bg-white" title="Download snapshot">Download</a>
+          </div>
+
+          <!-- Panel: Interactive (Power BI) -->
+          <div id="panel-interactive" role="tabpanel" aria-labelledby="tab-interactive">
+            <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg border border-gray-300 ring-4 ring-indigo-200/50">
+              <iframe title="SMS Outreach Dashboard Official" src="https://app.powerbi.com/reportEmbed?reportId=ccf37a01-b06a-48d0-aba7-b2c0039d3cfe&autoAuth=true&ctid=be337e90-9c3f-400f-8844-59f0503ac783" frameborder="0" allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-md"></iframe>
+            </div>
+            <p class="text-sm mt-2 text-gray-600 text-center">If you don’t have Power BI access, switch to the <strong>Static (Image)</strong> tab.</p>
+          </div>
+
+          <!-- Panel: Static snapshot -->
+          <div id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" class="hidden">
+            <div class="rounded-lg overflow-hidden border border-gray-300 bg-white">
+              <img src="assets/sms-outreach-dashboard.png" alt="SMS Outreach Dashboard snapshot" class="w-full h-auto" />
             </div>
           </div>
 
-          <!-- Slide 2: Power BI Dashboard -->
-          <div class="carousel-slide hidden">
-            <h2 class="text-xl font-bold mb-4">Power BI Dashboard</h2>
-            <img src="assets/SMS Outreach BI Dashboard.png" alt="Power BI Dashboard Preview" class="rounded-md shadow-lg border border-gray-300">
-            <p class="text-sm mt-2 text-gray-600">Preview of Power BI dashboard. Interactive view available upon request.</p>
-          </div>
-
-          <!-- Slide 3: Jupyter Notebook -->
-          <div class="carousel-slide hidden">
-            <h2 class="text-xl font-bold mb-4">Technical Breakdown</h2>
-            <iframe src="documents/hra_sms_pilot_analysis.html" class="w-full rounded-md border border-gray-300" height="500"></iframe>
-          </div>
-
-          <!-- Navigation Buttons -->
-          <div class="flex justify-between mt-4">
-            <button onclick="prevSlide()" class="bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700">Previous</button>
-            <button onclick="nextSlide()" class="bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700">Next</button>
+          <!-- Technical breakdown (notebook export) -->
+          <div class="mt-6">
+            <h4 class="text-silverPink font-semibold mb-2">Technical Breakdown</h4>
+            <iframe src="documents/hra_sms_pilot_analysis.html" class="w-full rounded-md border border-gray-300" height="420"></iframe>
           </div>
         </div>
-      </div>
-    </div>
+      </dialog>
+    </main>
 
-    <!-- Scripts -->
-    <script>lucide.createIcons();</script>
-    <!-- IMPORTANT: keep this so your original JS controls the modal/carousel -->
-    <script src="scripts/carousel.js"></script>
+    <footer class="py-10 text-center text-xs text-slate-500">
+      <p>© <span id="y"></span> Lujean El‑Hadri • Built with Tailwind</p>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+      document.getElementById('y').textContent = new Date().getFullYear();
+      lucide.createIcons();
+
+      // Tabs logic for modal
+      (function () {
+        const tabInteractive = document.getElementById('tab-interactive');
+        const tabPdf = document.getElementById('tab-pdf');
+        const panelInteractive = document.getElementById('panel-interactive');
+        const panelPdf = document.getElementById('panel-pdf');
+        if (!tabInteractive || !tabPdf) return;
+        function activate(which){
+          const isInteractive = which==='interactive';
+          tabInteractive.setAttribute('aria-selected', isInteractive);
+          tabPdf.setAttribute('aria-selected', !isInteractive);
+          panelInteractive.classList.toggle('hidden', !isInteractive);
+          panelPdf.classList.toggle('hidden', isInteractive);
+          tabInteractive.classList.toggle('bg-indigo-600', isInteractive);
+          tabInteractive.classList.toggle('text-white', isInteractive);
+          tabInteractive.classList.toggle('bg-white/70', !isInteractive);
+          tabInteractive.classList.toggle('text-indigo-700', !isInteractive);
+          tabInteractive.classList.toggle('border', !isInteractive);
+          tabInteractive.classList.toggle('border-indigo-200', !isInteractive);
+          tabPdf.classList.toggle('bg-indigo-600', !isInteractive);
+          tabPdf.classList.toggle('text-white', !isInteractive);
+          tabPdf.classList.toggle('bg-white/70', isInteractive);
+          tabPdf.classList.toggle('text-indigo-700', isInteractive);
+          tabPdf.classList.toggle('border', isInteractive);
+          tabPdf.classList.toggle('border-indigo-200', isInteractive);
+        }
+        tabInteractive.addEventListener('click', ()=>activate('interactive'));
+        tabPdf.addEventListener('click', ()=>activate('pdf'));
+      })();
+    </script>
   </body>
 </html>
