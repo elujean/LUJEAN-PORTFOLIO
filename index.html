@@ -958,11 +958,10 @@
       }
 
       function backdropClose(e) {
-        const card = smsModal.querySelector('.card');
-        if (!card) return;
-        const r = card.getBoundingClientRect();
-        const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
-        if (!inside) closeSmsModal();
+        // Only close if the click is directly on the dialog backdrop, not on any child elements
+        if (e.target === smsModal) {
+          closeSmsModal();
+        }
       }
 
       function trapKeys(e) {
@@ -1038,7 +1037,11 @@
               e.preventDefault();
               const next = (e.currentTarget === tabDash) ? tabNote : tabDash;
               next.focus();
-              (next === tabDash ? () => activate('dash') : () => activate('note'))();
+              if (next === tabDash) {
+                activate('dash');
+              } else {
+                activate('note');
+              }
             }
           });
         });
