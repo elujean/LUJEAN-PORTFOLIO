@@ -19,8 +19,20 @@ prior_hra_completed = np.random.binomial(1, 0.65, n_members)
 managed_flag = np.random.binomial(1, 0.15, n_members)
 high_risk_flag = np.random.binomial(1, 0.13, n_members)
 recent_kickout_flag = np.random.binomial(1, 0.08, n_members)
-er_visit_count = np.random.poisson(lam=0.6, size=n_members)
-er_visit_count = np.clip(er_visit_count, 0, 4)
+
+# Generate risk-correlated ER visits
+# Base rate varies by risk factors: age, chronic conditions, high_risk_flag
+base_er_rate = 0.3
+er_lambda = (
+    base_er_rate +
+    (age >= 75).astype(float) * 0.25 +  # Older members have more ER visits
+    (chronic_conditions >= 4).astype(float) * 0.35 +  # Multiple chronic conditions increase ER use
+    high_risk_flag.astype(float) * 0.4 +  # High-risk members have elevated ER utilization
+    (managed_flag == 0).astype(float) * 0.15  # Unmanaged members have slightly higher ER use
+)
+er_visit_count = np.array([np.random.poisson(lam=lam) for lam in er_lambda])
+er_visit_count = np.clip(er_visit_count, 0, 5)
+
 dsnp_flag = np.ones(n_members, dtype=int)
 
 region_code = np.random.choice([1, 2, 3, 4], size=n_members, p=[0.2, 0.25, 0.35, 0.2])
