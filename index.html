@@ -733,7 +733,7 @@
                       class="w-full" 
                       height="520" 
                       title="Jupyter Notebook Export"
-                      loading="lazy"></iframe>
+                      frameborder="0"></iframe>
             </div>
             <p class="text-xs mt-2 text-gray-600 text-center">
               Note: This notebook export reflects the latest uploaded HTML in <code>/documents</code>. Share the updated version when ready and I'll swap it in.
@@ -1011,6 +1011,17 @@
 
           panelDash.classList.toggle('hidden', !isDash);
           panelNote.classList.toggle('hidden', isDash);
+          
+          // Force iframe to load when notebook tab is activated
+          if (!isDash) {
+            const iframe = panelNote.querySelector('iframe');
+            if (iframe && !iframe.dataset.loaded) {
+              iframe.dataset.loaded = 'true';
+              // Reload src to ensure it loads
+              const src = iframe.getAttribute('src');
+              iframe.setAttribute('src', src);
+            }
+          }
 
           tabDash.classList.toggle('bg-indigo-600', isDash);
           tabDash.classList.toggle('text-white', isDash);
