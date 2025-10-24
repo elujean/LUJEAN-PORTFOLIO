@@ -191,8 +191,8 @@
 
       /* Intersection observer animation */
       .observe-fade {
-        opacity: 0;
-        transform: translateY(30px);
+        opacity: 1;
+        transform: translateY(0);
         transition: opacity .8s ease, transform .8s ease;
       }
       
@@ -288,6 +288,13 @@
         }
         html { scroll-behavior: auto; }
       }
+
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
+        body { -webkit-text-size-adjust: 100%; }
+        button:not([disabled]) { min-height: 44px; }
+      }
+      img, iframe { max-width: 100%; height: auto; }
     </style>
   </head>
 
