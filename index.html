@@ -21,7 +21,7 @@
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- 1. Tailwind CONFIG (IMPORTANT: tailwind.config = {...}) -->
+    <!-- Tailwind CONFIG -->
     <script>
       tailwind = {
         config: {
@@ -72,12 +72,13 @@
       };
     </script>
 
-    <!-- 2. Tailwind CDN (must come AFTER the config above) -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="utils/theme-fallback.css" />
 
+    <!-- Fallback CSS for modal layout and other custom stuff -->
+    <link rel="stylesheet" href="utils/theme-fallback.css" />
 
-    <!-- 3. Your site styles -->
+    <!-- Site styles -->
     <style>
       html {
         scroll-behavior: smooth;
@@ -810,145 +811,234 @@
         </div>
       </section>
 
-      <!-- Modal -->
-<dialog id="smsModal"
+
+      <!-- ========================= -->
+      <!-- MODAL: SMS CASE STUDY    -->
+      <!-- ========================= -->
+      <dialog
+        id="smsModal"
         aria-modal="true"
         role="dialog"
         aria-labelledby="smsModalTitle"
-        class="p-0 rounded-2xl backdrop:bg-black/40">
-  
-  <!-- modal-shell = the visible glass card -->
-  <div class="modal-shell">
+        class="backdrop:bg-black/40 p-0 rounded-2xl"
+        style="
+          /* force visible sizing/centering even if CSS file fails */
+          width:90vw;
+          max-width:1200px;
+          height:85vh;
+          max-height:85vh;
+          border:0;
+          padding:0;
+          background:transparent;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        "
+      >
+        <!-- CARD -->
+        <div
+          class="rounded-2xl shadow-soft bg-white/70 backdrop-blur-[10px] border border-white/30 flex flex-col overflow-hidden"
+          style="
+            width:100%;
+            height:100%;
+            max-height:85vh;
+            display:flex;
+            flex-direction:column;
+            box-shadow:0 8px 30px rgba(0,0,0,.06);
+          "
+        >
+          <!-- HEADER -->
+          <div
+            style="
+              flex-shrink:0;
+              padding:1rem 1rem 0.75rem 1rem;
+              display:flex;
+              flex-direction:column;
+              gap:0.75rem;
+              border-bottom:1px solid rgba(0,0,0,.04);
+            "
+          >
+            <!-- title + close -->
+            <div class="flex items-start justify-between gap-4">
+              <h3
+                id="smsModalTitle"
+                class="text-xl font-semibold text-silverPink"
+              >
+                SMS Outreach Pilot
+              </h3>
 
-    <!-- HEADER / TITLE / CLOSE / TABS WRAPPER -->
-    <div class="modal-header">
-      <!-- top row: title + close -->
-      <div class="flex items-start justify-between gap-4">
-        <h3 id="smsModalTitle"
-            class="text-xl font-semibold text-silverPink project-title">
-          SMS Outreach Pilot
-        </h3>
-
-        <button class="p-2 hover:bg-slate-100 rounded-lg transition-colors"
+              <button
+                class="p-2 hover:bg-slate-100 rounded-lg transition-colors"
                 onclick="closeSmsModal()"
-                aria-label="Close modal">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
+                aria-label="Close modal"
+              >
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
 
-      <!-- tab row: tabs + download -->
-      <div class="tab-row" role="tablist" aria-label="Case study tabs">
-        <button id="tab-dashboard"
+            <!-- tabs row -->
+            <div
+              class="flex flex-wrap items-center gap-3 text-sm font-semibold"
+              role="tablist"
+              aria-label="Case study tabs"
+            >
+              <button
+                id="tab-dashboard"
                 role="tab"
                 aria-selected="true"
                 aria-controls="panel-dashboard"
-                class="px-4 py-2 rounded-md bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition-colors">
-          Dashboard
-        </button>
+                class="px-4 py-2 rounded-md bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition-colors"
+              >
+                Dashboard
+              </button>
 
-        <button id="tab-notebook"
+              <button
+                id="tab-notebook"
                 role="tab"
                 aria-selected="false"
                 aria-controls="panel-notebook"
-                class="px-4 py-2 rounded-md bg-white/70 text-indigo-700 font-semibold border border-indigo-200 hover:bg-white transition-colors">
-          Notebook
-        </button>
+                class="px-4 py-2 rounded-md bg-white/70 text-indigo-700 font-semibold border border-indigo-200 hover:bg-white transition-colors"
+              >
+                Notebook
+              </button>
 
-        <a href="assets/sms-outreach-dashboard.png"
-           download
-           class="ml-auto px-4 py-2 rounded-md bg-slate-100 text-slate-800 border border-slate-300 hover:bg-white transition-colors flex items-center gap-1"
-           title="Download snapshot"
-           aria-label="Download dashboard snapshot">
-          <i data-lucide="download" class="w-4 h-4"></i>
-          <span class="text-sm font-medium">PNG</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- BODY: panels live here, scrolls -->
-    <div class="modal-body">
-
-      <!-- DASHBOARD PANEL -->
-      <div id="panel-dashboard"
-           role="tabpanel"
-           aria-labelledby="tab-dashboard">
-
-        <!-- Static snapshot -->
-        <div class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft">
-          <img src="assets/sms-outreach-dashboard.png"
-               alt="SMS Outreach Dashboard snapshot"
-               class="w-full h-auto"
-               loading="lazy" />
-        </div>
-
-        <!-- helper text -->
-        <p class="text-[12px] mt-2 text-slate-600 text-center leading-relaxed font-medium">
-          Automated SMS outreach + risk-based scoring to drive HRA completion in D-SNP members.
-          Dashboard tracks outreach tiers, engagement lift, and completion movement.
-        </p>
-        <p class="text-[11px] mt-1 text-gray-500 text-center">
-          Below: secure Power BI embed. If you're not authorized, you may just see an empty frame.
-        </p>
-
-        <!-- Interactive Power BI iframe with skeleton loader -->
-        <div class="mt-4 relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg border border-gray-300 ring-4 ring-indigo-200/50">
-          <!-- Loader overlay -->
-          <div id="biLoader"
-               class="absolute inset-0 grid place-items-center">
-            <div class="w-5/6 max-w-3xl rounded-md overflow-hidden border border-gray-200 shadow-soft bg-white">
-              <img src="assets/sms-outreach-dashboard.png"
-                   alt="Loading Power BI…"
-                   class="w-full h-auto blur-sm" />
-            </div>
-            <div class="mt-3 text-sm text-gray-600 animate-pulse font-medium">
-              Loading interactive report...
-            </div>
-            <div class="mt-2 w-48 h-1 bg-gray-200 rounded-full overflow-hidden relative">
-              <div class="loading-bar"></div>
+              <a
+                href="assets/sms-outreach-dashboard.png"
+                download
+                class="ml-auto px-4 py-2 rounded-md bg-slate-100 text-slate-800 border border-slate-300 hover:bg-white transition-colors flex items-center gap-1"
+                title="Download snapshot"
+                aria-label="Download dashboard snapshot"
+              >
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span class="text-sm font-medium">PNG</span>
+              </a>
             </div>
           </div>
 
-          <!-- Iframe fades in when ready -->
-          <iframe id="biFrame"
+          <!-- BODY (scrollable) -->
+          <div
+            style="
+              flex:1 1 auto;
+              min-height:0;
+              overflow-y:auto;
+              padding:1rem;
+              background:transparent;
+            "
+          >
+            <!-- DASHBOARD PANEL -->
+            <div
+              id="panel-dashboard"
+              role="tabpanel"
+              aria-labelledby="tab-dashboard"
+            >
+              <!-- Static snapshot -->
+              <div
+                class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft"
+              >
+                <img
+                  src="assets/sms-outreach-dashboard.png"
+                  alt="SMS Outreach Dashboard snapshot"
+                  class="w-full h-auto"
+                  loading="lazy"
+                />
+              </div>
+
+              <p
+                class="text-[12px] mt-2 text-slate-600 text-center leading-relaxed font-medium"
+              >
+                Automated SMS outreach + risk-based scoring to drive HRA
+                completion in D-SNP members. Dashboard tracks outreach tiers,
+                engagement lift, and completion movement.
+              </p>
+              <p
+                class="text-[11px] mt-1 text-gray-500 text-center"
+              >
+                Below: secure Power BI embed. If you're not authorized, you may
+                just see an empty frame.
+              </p>
+
+              <!-- Interactive Power BI iframe with skeleton loader -->
+              <div
+                class="mt-4 relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg border border-gray-300 ring-4 ring-indigo-200/50"
+              >
+                <!-- Loader overlay -->
+                <div
+                  id="biLoader"
+                  class="absolute inset-0 grid place-items-center bg-white"
+                >
+                  <div
+                    class="w-5/6 max-w-3xl rounded-md overflow-hidden border border-gray-200 shadow-soft"
+                  >
+                    <img
+                      src="assets/sms-outreach-dashboard.png"
+                      alt="Loading Power BI…"
+                      class="w-full h-auto blur-sm"
+                    />
+                  </div>
+                  <div
+                    class="mt-3 text-sm text-gray-600 animate-pulse font-medium"
+                  >
+                    Loading interactive report...
+                  </div>
+                  <div
+                    class="mt-2 w-48 h-1 bg-gray-200 rounded-full overflow-hidden relative"
+                  >
+                    <div class="loading-bar"></div>
+                  </div>
+                </div>
+
+                <!-- Iframe fades in when ready -->
+                <iframe
+                  id="biFrame"
                   title="SMS Outreach Dashboard Official"
                   src="https://app.powerbi.com/reportEmbed?reportId=ccf37a01-b06a-48d0-aba7-b2c0039d3cfe&autoAuth=true&ctid=be337e90-9c3f-400f-8844-59f0503ac783"
                   frameborder="0"
                   allowfullscreen
                   loading="lazy"
-                  class="absolute top-0 left-0 w-full h-full rounded-md opacity-0 transition-opacity duration-500">
-          </iframe>
-        </div>
-      </div>
+                  class="absolute top-0 left-0 w-full h-full rounded-md opacity-0 transition-opacity duration-500"
+                ></iframe>
+              </div>
+            </div>
 
-      <!-- NOTEBOOK PANEL -->
-      <div id="panel-notebook"
-           role="tabpanel"
-           aria-labelledby="tab-notebook"
-           class="hidden">
+            <!-- NOTEBOOK PANEL -->
+            <div
+              id="panel-notebook"
+              role="tabpanel"
+              aria-labelledby="tab-notebook"
+              class="hidden"
+            >
+              <div
+                class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft"
+              >
+                <div
+                  class="p-4 text-[12px] text-slate-700 leading-relaxed font-medium text-center"
+                >
+                  This notebook walks through the scoring logic, outreach
+                  tiers, and lift calculation used in the pilot. Public
+                  version is redacted for privacy. No real member data is
+                  exposed.
+                </div>
 
-        <div class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft">
-          <div class="p-4 text-[12px] text-slate-700 leading-relaxed font-medium text-center">
-            This notebook walks through the scoring logic, outreach tiers,
-            and lift calculation used in the pilot.
-            Public version is redacted for privacy. No real member data is exposed.
-          </div>
-
-          <iframe src="documents/hra_sms_pilot_analysis.html"
+                <iframe
+                  src="documents/hra_sms_pilot_analysis.html"
                   class="w-full"
                   height="520"
                   title="Jupyter Notebook Export"
-                  loading="lazy"></iframe>
+                  loading="lazy"
+                ></iframe>
+              </div>
+
+              <p
+                class="text-[11px] mt-2 text-gray-600 text-center"
+              >
+                Public version is redacted for privacy. No real member data is
+                exposed.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <p class="text-[11px] mt-2 text-gray-600 text-center">
-          Public version is redacted for privacy. No real member data is exposed.
-        </p>
-      </div>
-
-    </div> <!-- /modal-body -->
-
-  </div> <!-- /modal-shell -->
-</dialog>
+      </dialog>
+      <!-- /MODAL -->
     </main>
 
     <!-- Back to Top Button -->
@@ -968,6 +1058,7 @@
 
     <!-- SCRIPTS -->
     <script>
+      // run after DOM load
       document.addEventListener("DOMContentLoaded", () => {
         if (window.lucide && typeof lucide.createIcons === "function") {
           try {
@@ -986,8 +1077,12 @@
         initBackToTop();
       });
 
+      // footer year
       document.getElementById("y").textContent = new Date().getFullYear();
 
+      // =========================
+      // Sticky header shadow
+      // =========================
       function initHeaderShadow() {
         const header = document.getElementById("siteHeader");
         const apply = () => {
@@ -1005,6 +1100,9 @@
         window.addEventListener("scroll", apply, { passive: true });
       }
 
+      // =========================
+      // Mobile menu
+      // =========================
       function initMobileMenu() {
         const menuBtn = document.getElementById("mobileMenuBtn");
         const menu = document.getElementById("mobileMenu");
@@ -1035,6 +1133,9 @@
         });
       }
 
+      // =========================
+      // Intersection Observer fade-ins
+      // =========================
       function initObserver() {
         const options = {
           threshold: 0.1,
@@ -1055,6 +1156,9 @@
         });
       }
 
+      // =========================
+      // Animated counters (if any)
+      // =========================
       function initCounters() {
         const counters = document.querySelectorAll(".counter");
         const speed = 200;
@@ -1094,6 +1198,9 @@
         if (heroSection) observer.observe(heroSection);
       }
 
+      // =========================
+      // Back to top button
+      // =========================
       function initBackToTop() {
         const btn = document.getElementById("backToTop");
 
@@ -1117,6 +1224,9 @@
         });
       }
 
+      // =========================
+      // Modal logic / trapping focus
+      // =========================
       const smsModal = document.getElementById("smsModal");
       let lastFocused = null;
 
@@ -1162,6 +1272,7 @@
       }
 
       function backdropClose(e) {
+        // click outside card (on the dialog backdrop)
         if (e.target === smsModal) {
           closeSmsModal();
         }
@@ -1195,9 +1306,13 @@
         }
       }
 
+      // expose to buttons
       window.openSmsModal = openSmsModal;
       window.closeSmsModal = closeSmsModal;
 
+      // =========================
+      // Tabs (Dashboard / Notebook)
+      // =========================
       function initTabs() {
         const tabDash = document.getElementById("tab-dashboard");
         const tabNote = document.getElementById("tab-notebook");
@@ -1207,6 +1322,7 @@
 
         function activate(which) {
           const isDash = which === "dash";
+
           tabDash.setAttribute("aria-selected", isDash);
           tabNote.setAttribute("aria-selected", !isDash);
 
@@ -1223,6 +1339,7 @@
             }
           }
 
+          // styling swaps
           tabDash.classList.toggle("bg-indigo-600", isDash);
           tabDash.classList.toggle("text-white", isDash);
           tabDash.classList.toggle("bg-white/70", !isDash);
@@ -1256,14 +1373,19 @@
           });
         });
 
+        // default tab
         activate("dash");
       }
 
+      // =========================
+      // Power BI skeleton loader
+      // =========================
       function initPowerBILoader() {
         const iframe = document.getElementById("biFrame");
         const loader = document.getElementById("biLoader");
         if (!iframe || !loader) return;
 
+        // when Power BI actually loads, fade iframe in and hide loader
         iframe.addEventListener(
           "load",
           () => {
@@ -1273,7 +1395,7 @@
           { once: true }
         );
 
-        // safety fallback
+        // safety fallback so you never stare at a spinner forever
         setTimeout(() => {
           loader.classList.add("hidden");
           iframe.classList.remove("opacity-0");
@@ -1282,6 +1404,3 @@
     </script>
   </body>
 </html>
-
-
-
