@@ -85,3 +85,39 @@ header {
   color: #869F9F;
   text-shadow: 0 2px 10px rgba(134, 159, 159, 0.15);
 }
+
+/* =============================
+   SMS Outreach Modal Resizing
+   ============================= */
+
+/* Make the modal wider and taller on large screens */
+dialog#smsModal {
+  width: 90vw;
+  max-width: 1200px;       /* increase from 768–1024px */
+  height: 85vh;            /* take up most of viewport height */
+  padding: 0;
+}
+
+dialog#smsModal .card {
+  height: 100%;
+  overflow-y: auto;         /* scroll if content overflows */
+}
+
+/* Ensure iframe expands properly */
+#panel-dashboard iframe,
+#panel-notebook iframe {
+  width: 100%;
+  height: 70vh;             /* make dashboard & notebook taller */
+}
+
+/* Slightly reduce height for smaller screens */
+@media (max-width: 768px) {
+  dialog#smsModal {
+    width: 95vw;
+    height: 80vh;
+  }
+  #panel-dashboard iframe,
+  #panel-notebook iframe {
+    height: 55vh;
+  }
+}
