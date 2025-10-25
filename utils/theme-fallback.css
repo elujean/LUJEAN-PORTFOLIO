@@ -86,36 +86,93 @@ header {
   text-shadow: 0 2px 10px rgba(134, 159, 159, 0.15);
 }
 
-/* =============================
-   SMS Outreach Modal Resizing
-   ============================= */
+/* === SMS MODAL LAYOUT OVERRIDES === */
 
-/* Make the modal wider and taller on large screens */
+/* Size + center the modal dialog itself */
 dialog#smsModal {
   width: 90vw;
-  max-width: 1200px;       /* increase from 768–1024px */
-  height: 85vh;            /* take up most of viewport height */
+  max-width: 1200px;
+  height: 85vh;
+  max-height: 85vh;
+
   padding: 0;
+  border: 0;
+  background: transparent;      /* dialog chrome transparent, we show our own card */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-dialog#smsModal .card {
+/* The actual "card" container inside the dialog */
+dialog#smsModal .modal-shell {
+  /* use your glass card look, but also stretch */
+  background: rgba(255,255,255,0.34);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+
+  width: 100%;
   height: 100%;
-  overflow-y: auto;         /* scroll if content overflows */
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* header fixed, body scrolls */
+  padding: 1rem;
 }
 
-/* Ensure iframe expands properly */
+/* Header row (title/close/download) shouldn't scroll */
+dialog#smsModal .modal-header {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Tabs row */
+dialog#smsModal .tab-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Scrollable body (panels) */
+dialog#smsModal .modal-body {
+  flex: 1 1 auto;
+  min-height: 0;           /* lets flexbox allow scrolling */
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  padding: 1rem;
+}
+
+/* Force iframes to be tall inside panels */
 #panel-dashboard iframe,
 #panel-notebook iframe {
   width: 100%;
-  height: 70vh;             /* make dashboard & notebook taller */
+  height: 70vh;
+  border: 0;
+  border-radius: 0.5rem;
 }
 
-/* Slightly reduce height for smaller screens */
+/* loader box in dashboard panel */
+#biLoader {
+  background: white;
+}
+
+/* mobile tweaks */
 @media (max-width: 768px) {
   dialog#smsModal {
     width: 95vw;
     height: 80vh;
+    max-height: 80vh;
   }
+
   #panel-dashboard iframe,
   #panel-notebook iframe {
     height: 55vh;
