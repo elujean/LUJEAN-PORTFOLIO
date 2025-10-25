@@ -5,54 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Lujean El-Hadri | Digital Portfolio</title>
 
-    <!-- Preload critical fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Icons + Tailwind -->
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 1. Tailwind CONFIG (IMPORTANT: tailwind.config = {...}) -->
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              mintCream: "#F7FFF6",
-              morningBlue: "#869F9F",
-              silverPink: "#C9A8A0",
-              americanSilver: "#C6DFCD",
-              alabaster: "#F1F2E4"
-            },
-            boxShadow: {
-              soft: "0 8px 30px rgba(0,0,0,.06)",
-              nav: "0 6px 18px rgba(0,0,0,.08)",
-              glow: "0 0 20px rgba(198,223,205,.4)"
-            },
-            transitionTimingFunction: { smooth: "cubic-bezier(.25,.1,.25,1)" },
-            animation: {
-              fadeUp: "fadeUp .7s ease-out forwards",
-              fadeIn: "fadeIn .6s ease-out forwards",
-              shimmer: "shimmer 2s infinite",
-              float: "float 3s ease-in-out infinite"
-            },
-            keyframes: {
-              fadeUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' }
+      tailwind = {
+        config: {
+          theme: {
+            extend: {
+              colors: {
+                mintCream: "#F7FFF6",
+                morningBlue: "#869F9F",
+                silverPink: "#C9A8A0",
+                americanSilver: "#C6DFCD",
+                alabaster: "#F1F2E4"
               },
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' }
+              boxShadow: {
+                soft: "0 8px 30px rgba(0,0,0,.06)",
+                nav: "0 6px 18px rgba(0,0,0,.08)",
+                glow: "0 0 20px rgba(198,223,205,.4)"
               },
-              shimmer: {
-                '0%': { backgroundPosition: '-200% center' },
-                '100%': { backgroundPosition: '200% center' }
+              transitionTimingFunction: {
+                smooth: "cubic-bezier(.25,.1,.25,1)"
               },
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-10px)' }
+              animation: {
+                fadeUp: "fadeUp .7s ease-out forwards",
+                fadeIn: "fadeIn .6s ease-out forwards",
+                shimmer: "shimmer 2s infinite",
+                float: "float 3s ease-in-out infinite"
+              },
+              keyframes: {
+                fadeUp: {
+                  "0%": { opacity: "0", transform: "translateY(20px)" },
+                  "100%": { opacity: "1", transform: "translateY(0)" }
+                },
+                fadeIn: {
+                  "0%": { opacity: "0" },
+                  "100%": { opacity: "1" }
+                },
+                shimmer: {
+                  "0%": { backgroundPosition: "-200% center" },
+                  "100%": { backgroundPosition: "200% center" }
+                },
+                float: {
+                  "0%, 100%": { transform: "translateY(0)" },
+                  "50%": { transform: "translateY(-10px)" }
+                }
               }
             }
           }
@@ -60,22 +72,38 @@
       };
     </script>
 
+    <!-- 2. Tailwind CDN (must come AFTER the config above) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="utils/theme-fallback.css" />
+
+
+    <!-- 3. Your site styles -->
     <style>
-      html { 
+      html {
         scroll-behavior: smooth;
         scroll-padding-top: 80px;
       }
-      
-      body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea { 
-        font-family: 'Heebo', sans-serif; 
+
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      a,
+      button,
+      input,
+      textarea {
+        font-family: "Heebo", sans-serif;
       }
 
-      /* Skip to content link */
       .skip-link {
         position: absolute;
         top: -40px;
         left: 0;
-        background: #C6DFCD;
+        background: #c6dfcd;
         color: #000;
         padding: 8px 16px;
         z-index: 100;
@@ -87,81 +115,85 @@
         top: 0;
       }
 
-      /* Enhanced glassmorphism */
       .card {
-        background: rgba(255,255,255,.34);
+        background: rgba(255, 255, 255, 0.34);
         backdrop-filter: blur(10px) saturate(140%);
-        border: 1px solid rgba(255,255,255,.25);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         border-radius: 1rem;
-        box-shadow: 0 8px 30px rgba(0,0,0,.06);
-        transition: transform .3s ease, box-shadow .3s ease;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         position: relative;
         overflow: hidden;
       }
-      
       .card::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
-        transition: left .5s ease;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s ease;
       }
-      
       .card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 12px 40px rgba(0,0,0,.1);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
       }
-      
       .card:hover::before {
         left: 100%;
       }
 
-      /* Hero gradient background */
       .hero-gradient {
-        background: linear-gradient(135deg, #F7FFF6 0%, #E8F5E9 50%, #C6DFCD 100%);
+        background: linear-gradient(
+          135deg,
+          #f7fff6 0%,
+          #e8f5e9 50%,
+          #c6dfcd 100%
+        );
         background-size: 200% 200%;
         animation: gradientShift 8s ease infinite;
       }
-      
       @keyframes gradientShift {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
       }
 
-      /* Enhanced buttons */
       .btn-primary {
         position: relative;
         overflow: hidden;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
       }
-      
       .btn-primary:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(198,223,205,.6);
+        box-shadow: 0 0 20px rgba(198, 223, 205, 0.6);
       }
-      
       .btn-primary::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: rgba(255,255,255,.3);
+        background: rgba(255, 255, 255, 0.3);
         transform: translate(-50%, -50%);
-        transition: width .6s, height .6s;
+        transition: width 0.6s, height 0.6s;
       }
-      
       .btn-primary:hover::after {
         width: 300px;
         height: 300px;
       }
 
-      /* Tech badge styles */
       .tech-badge {
         display: inline-flex;
         align-items: center;
@@ -171,55 +203,48 @@
         font-size: 11px;
         font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: .5px;
-        background: rgba(255,255,255,.5);
-        border: 1px solid rgba(134,159,159,.2);
-        transition: all .2s ease;
+        letter-spacing: 0.5px;
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(134, 159, 159, 0.2);
+        transition: all 0.2s ease;
       }
-      
       .tech-badge:hover {
-        background: rgba(198,223,205,.3);
+        background: rgba(198, 223, 205, 0.3);
         transform: translateY(-2px);
       }
 
-      /* Focus visible styles for accessibility */
       *:focus-visible {
-        outline: 3px solid #C6DFCD;
+        outline: 3px solid #c6dfcd;
         outline-offset: 2px;
         border-radius: 4px;
       }
 
-      /* Intersection observer animation */
       .observe-fade {
         opacity: 1;
         transform: translateY(0);
-        transition: opacity .8s ease, transform .8s ease;
+        transition: opacity 0.8s ease, transform 0.8s ease;
       }
-      
       .observe-fade.visible {
         opacity: 1;
         transform: translateY(0);
       }
 
-      /* Mobile menu transition */
       .mobile-menu {
         max-height: 0;
         overflow: hidden;
-        transition: max-height .3s ease;
+        transition: max-height 0.3s ease;
       }
-      
       .mobile-menu.open {
         max-height: 400px;
       }
 
-      /* Back to top button */
       .back-to-top {
         position: fixed;
         bottom: 30px;
         right: 30px;
         width: 50px;
         height: 50px;
-        background: #C6DFCD;
+        background: #c6dfcd;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -227,28 +252,29 @@
         cursor: pointer;
         opacity: 0;
         transform: translateY(100px);
-        transition: all .3s ease;
-        box-shadow: 0 4px 12px rgba(0,0,0,.15);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         z-index: 40;
       }
-      
       .back-to-top.visible {
         opacity: 1;
         transform: translateY(0);
       }
-      
       .back-to-top:hover {
-        background: #B3D3BF;
+        background: #b3d3bf;
         transform: translateY(-5px);
-        box-shadow: 0 6px 20px rgba(0,0,0,.2);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
       }
 
-      /* Impact metric styling */
       .impact-metric {
         display: inline-block;
         padding: 6px 12px;
-        background: linear-gradient(135deg, rgba(201,168,160,.15), rgba(134,159,159,.15));
-        border-left: 3px solid #C9A8A0;
+        background: linear-gradient(
+          135deg,
+          rgba(201, 168, 160, 0.15),
+          rgba(134, 159, 159, 0.15)
+        );
+        border-left: 3px solid #c9a8a0;
         border-radius: 6px;
         font-size: 13px;
         font-weight: 600;
@@ -256,45 +282,58 @@
         margin-top: 8px;
       }
 
-      /* Section dividers */
       .section-divider {
         margin: 4rem auto;
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, transparent, #C6DFCD, transparent);
+        background: linear-gradient(90deg, transparent, #c6dfcd, transparent);
         border-radius: 2px;
       }
 
-      /* Loading progress bar */
       .loading-bar {
         position: absolute;
         bottom: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, #C6DFCD, #869F9F);
+        background: linear-gradient(90deg, #c6dfcd, #869f9f);
         border-radius: 2px;
         animation: loadProgress 5s ease-out forwards;
       }
-      
       @keyframes loadProgress {
-        0% { width: 0%; }
-        100% { width: 100%; }
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after { 
-          animation: none !important; 
-          transition: none !important; 
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
         }
-        html { scroll-behavior: auto; }
+        html {
+          scroll-behavior: auto;
+        }
       }
 
-      /* Mobile optimizations */
       @media (max-width: 768px) {
-        body { -webkit-text-size-adjust: 100%; }
-        button:not([disabled]) { min-height: 44px; }
+        body {
+          -webkit-text-size-adjust: 100%;
+        }
+        button:not([disabled]) {
+          min-height: 44px;
+        }
       }
-      img, iframe { max-width: 100%; height: auto; }
+
+      img,
+      iframe {
+        max-width: 100%;
+        height: auto;
+      }
     </style>
   </head>
 
@@ -317,19 +356,23 @@
             <a href="#projects" class="hover:text-morningBlue transition-colors">Projects</a>
             <a href="#whatido" class="hover:text-morningBlue transition-colors">What I Do</a>
             <a href="#contact" class="hover:text-morningBlue transition-colors">Contact</a>
-            <a href="assets/Lujean%20El-Hadri.pdf"
-               type="application/pdf"
-               download="Lujean_El-Hadri_Resume.pdf"
-               class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-americanSilver text-slate-800 hover:bg-[#B3D3BF] transition-all btn-primary">
+
+            <a
+              href="assets/Lujean%20El-Hadri.pdf"
+              download="Lujean_El-Hadri_Resume.pdf"
+              class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-americanSilver text-slate-800 hover:bg-[#B3D3BF] transition-all btn-primary"
+            >
               <i data-lucide="download" class="w-4 h-4"></i> Resume
             </a>
           </div>
 
           <!-- Mobile Menu Button -->
-          <button id="mobileMenuBtn" 
-                  class="md:hidden p-2 hover:bg-white/50 rounded-lg transition-colors z-10"
-                  aria-label="Toggle mobile menu"
-                  aria-expanded="false">
+          <button
+            id="mobileMenuBtn"
+            class="md:hidden p-2 hover:bg-white/50 rounded-lg transition-colors z-10"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+          >
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
@@ -341,9 +384,11 @@
             <a href="#projects" class="hover:text-morningBlue transition-colors px-2 mobile-link">Projects</a>
             <a href="#whatido" class="hover:text-morningBlue transition-colors px-2 mobile-link">What I Do</a>
             <a href="#contact" class="hover:text-morningBlue transition-colors px-2 mobile-link">Contact</a>
-            <a href="assets/Lujean%20El-Hadri.pdf"
-               download="Lujean_El-Hadri_Resume.pdf"
-               class="inline-flex items-center gap-1 px-3 py-2 rounded-full bg-americanSilver text-slate-800 hover:bg-[#B3D3BF] transition-colors w-fit">
+            <a
+              href="assets/Lujean%20El-Hadri.pdf"
+              download="Lujean_El-Hadri_Resume.pdf"
+              class="inline-flex items-center gap-1 px-3 py-2 rounded-full bg-americanSilver text-slate-800 hover:bg-[#B3D3BF] transition-colors w-fit"
+            >
               <i data-lucide="download" class="w-4 h-4"></i> Resume
             </a>
           </div>
@@ -354,18 +399,37 @@
     <!-- MAIN -->
     <main id="main-content" class="mx-auto max-w-6xl px-6 md:px-8">
       <!-- HERO -->
-      <section id="home" class="hero-gradient text-center pt-16 md:pt-24 pb-16 md:pb-20 -mx-6 md:-mx-8 px-6 md:px-8">
-        <div class="mx-auto w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-soft animate-float">
-          <img src="assets/headshot3.JPG" alt="Headshot of Lujean El-Hadri" class="w-full h-full object-cover" />
+      <section
+        id="home"
+        class="hero-gradient text-center pt-16 md:pt-24 pb-16 md:pb-20 -mx-6 md:-mx-8 px-6 md:px-8"
+      >
+        <div
+          class="mx-auto w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-soft animate-float"
+        >
+          <img
+            src="assets/headshot3.JPG"
+            alt="Headshot of Lujean El-Hadri"
+            class="w-full h-full object-cover"
+          />
         </div>
-        <h1 class="mt-8 text-4xl md:text-6xl font-extrabold tracking-tight text-morningBlue" style="text-shadow: 0 2px 10px rgba(134,159,159,.15)">
+        <h1
+          class="mt-8 text-4xl md:text-6xl font-extrabold tracking-tight text-morningBlue"
+          style="text-shadow: 0 2px 10px rgba(134,159,159,.15)"
+        >
           Lujean El-Hadri
         </h1>
-        <p class="mt-4 text-sm md:text-[15px] uppercase tracking-[.2em] text-americanSilver font-semibold" style="font-family:'Heebo',sans-serif">
+
+        <p
+          class="mt-4 text-sm md:text-[15px] uppercase tracking-[.2em] text-americanSilver font-semibold"
+          style="font-family:'Heebo',sans-serif"
+        >
           Where healthcare meets analytics: building smarter systems, one insight at a time.
         </p>
-        <p class="mt-6 max-w-3xl mx-auto text-base md:text-lg text-slate-700 leading-relaxed font-medium">
-          Every dataset tells a story,  mine is about turning challenges into opportunities for better care.
+        <p
+          class="mt-6 max-w-3xl mx-auto text-base md:text-lg text-slate-700 leading-relaxed font-medium"
+        >
+          Every dataset tells a story, mine is about turning challenges into opportunities for
+          better care.
         </p>
       </section>
 
@@ -374,31 +438,49 @@
       <!-- ABOUT ME -->
       <section id="about" class="mt-16 md:mt-20 observe-fade">
         <div class="card p-8 md:p-10 max-w-4xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-silverPink text-center">About Me</h2>
+          <h2
+            class="text-3xl md:text-4xl font-extrabold text-silverPink text-center"
+          >
+            About Me
+          </h2>
           <div class="mt-6 text-slate-800 leading-relaxed space-y-4">
-            <p style="color: #2d3748;">
-             My path into health informatics wasn't a straight line, it was a gradual realization that the systems behind healthcare are just as important as the care itself.
+            <p style="color: #2d3748">
+              My path into health informatics wasn't a straight line, it was a gradual realization
+              that the systems behind healthcare are just as important as the care itself.
             </p>
-            <p style="color: #2d3748;">
-             I began on the operational side of healthcare, managing claims, reimbursements, and patient coordination. Over time, I realized that every inefficiency told a story,  one that could be rewritten through data and design. That curiosity about why things worked the way they did grew into a passion for analytics and process improvement.
+            <p style="color: #2d3748">
+              I began on the operational side of healthcare, managing claims, reimbursements, and
+              patient coordination. Over time, I realized that every inefficiency told a story, one
+              that could be rewritten through data and design. That curiosity about why things
+              worked the way they did grew into a passion for analytics and process improvement.
             </p>
-            <p style="color: #2d3748;">
-            What started as small experiments with spreadsheets and workflows evolved into full-scale data projects, visual dashboards, and automated scoring models. Each one teaching me how technology can simplify complexity and empower better decisions.
+            <p style="color: #2d3748">
+              What started as small experiments with spreadsheets and workflows evolved into
+              full-scale data projects, visual dashboards, and automated scoring models. Each one
+              teaching me how technology can simplify complexity and empower better decisions.
             </p>
-            <p style="color: #2d3748;">
-              This site is both a reflection and continuation of that journey: a space where I learn by building, and where I share the insights that come from transforming questions into measurable solutions.
+            <p style="color: #2d3748">
+              This site is both a reflection and continuation of that journey: a space where I learn
+              by building, and where I share the insights that come from transforming questions into
+              measurable solutions.
             </p>
           </div>
         </div>
       </section>
 
-       <div class="section-divider"></div>
+      <div class="section-divider"></div>
 
       <!-- PROJECTS -->
       <section id="projects" class="mt-16 md:mt-20 observe-fade">
         <div class="text-center">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-silverPink">Projects</h2>
-          <p class="mt-2 text-slate-600 max-w-3xl mx-auto font-medium">Featured BI and analytics work samples.</p>
+          <h2
+            class="text-3xl md:text-4xl font-extrabold text-silverPink"
+          >
+            Projects
+          </h2>
+          <p class="mt-2 text-slate-600 max-w-3xl mx-auto font-medium">
+            Featured BI and analytics work samples.
+          </p>
         </div>
 
         <!-- Project: SMS Outreach Pilot -->
@@ -414,33 +496,49 @@
               <span class="tech-badge">
                 <i data-lucide="code" class="w-3 h-3"></i> Python
               </span>
-              <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-200">
+              <span
+                class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-200"
+              >
                 <i data-lucide="check-circle" class="w-3 h-3"></i> Live Demo
               </span>
             </div>
             <h3 class="text-2xl font-bold text-silverPink">SMS Outreach Pilot</h3>
             <p class="mt-2 text-slate-700 text-sm leading-relaxed font-medium">
-              Stratified scoring + automated SMS to increase HRA completions. Includes Power BI dashboard and Jupyter notebook breakdown.
+              Stratified scoring + automated SMS to increase HRA completions. Includes Power BI
+              dashboard and Jupyter notebook breakdown.
             </p>
             <div class="impact-metric">
-              <i data-lucide="trending-up" class="w-4 h-4 inline"></i> 
+              <i data-lucide="trending-up" class="w-4 h-4 inline"></i>
               Increased completion rate by 23%
             </div>
-            <button onclick="openSmsModal()"
-                    class="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-americanSilver text-slate-900 font-semibold hover:bg-[#B3D3BF] transition-all btn-primary shadow-soft">
+            <button
+              onclick="openSmsModal()"
+              class="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-americanSilver text-slate-900 font-semibold hover:bg-[#B3D3BF] transition-all btn-primary shadow-soft"
+            >
               <i data-lucide="play" class="w-4 h-4"></i> View Case Study
             </button>
           </div>
 
-          <div class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow">
-            <img src="assets/sms-outreach-dashboard.png" alt="SMS Outreach Dashboard" class="w-full h-full object-cover" loading="lazy" />
+          <div
+            class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow"
+          >
+            <img
+              src="assets/sms-outreach-dashboard.png"
+              alt="SMS Outreach Dashboard"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         </article>
 
-        <!-- AURA Project (coming soon) -->
+        <!-- AURA Project -->
         <article class="grid md:grid-cols-2 gap-6 items-center mt-10 observe-fade">
-          <div class="rounded-2xl overflow-hidden shadow-soft order-1 hover:shadow-xl transition-shadow">
-            <div class="aspect-video w-full bg-gradient-to-br from-americanSilver/60 to-morningBlue/30 grid place-items-center text-morningBlue">
+          <div
+            class="rounded-2xl overflow-hidden shadow-soft order-1 hover:shadow-xl transition-shadow"
+          >
+            <div
+              class="aspect-video w-full bg-gradient-to-br from-americanSilver/60 to-morningBlue/30 grid place-items-center text-morningBlue"
+            >
               <i data-lucide="scan" class="w-14 h-14 animate-pulse"></i>
             </div>
           </div>
@@ -455,25 +553,33 @@
               <span class="tech-badge">
                 <i data-lucide="database" class="w-3 h-3"></i> SQL
               </span>
-              <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 border border-amber-200">
+              <span
+                class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 border border-amber-200"
+              >
                 <i data-lucide="clock" class="w-3 h-3"></i> In Progress
               </span>
             </div>
-            <h3 class="text-2xl font-bold text-silverPink">AURA – AI-Driven Claims Optimizer</h3>
+            <h3 class="text-2xl font-bold text-silverPink">
+              AURA – AI-Driven Claims Optimizer
+            </h3>
             <p class="mt-2 text-slate-700 text-sm leading-relaxed font-medium">
-              Concept prototype that flags likely denials before submission using NLP rules + heuristics. Workflow design and data model are defined; UI and demo in progress.
+              Concept prototype that flags likely denials before submission using NLP rules +
+              heuristics. Workflow design and data model are defined; UI and demo in progress.
             </p>
             <div class="impact-metric">
-              <i data-lucide="target" class="w-4 h-4 inline"></i> 
+              <i data-lucide="target" class="w-4 h-4 inline"></i>
               Target: 40% reduction in denial rate
             </div>
-            <button disabled class="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-slate-200 text-slate-500 cursor-not-allowed opacity-60">
+            <button
+              disabled
+              class="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-slate-200 text-slate-500 cursor-not-allowed opacity-60"
+            >
               <i data-lucide="clock" class="w-4 h-4"></i> Demo coming soon
             </button>
           </div>
         </article>
 
-        <!-- VITALSIGN Project (coming soon) -->
+        <!-- VITALSIGN Project -->
         <article class="grid md:grid-cols-2 gap-6 items-center mt-10 observe-fade">
           <div class="order-2 card p-6">
             <div class="flex flex-wrap gap-2 mb-3">
@@ -486,24 +592,36 @@
               <span class="tech-badge">
                 <i data-lucide="database" class="w-3 h-3"></i> SQL
               </span>
-              <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 border border-amber-200">
+              <span
+                class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 border border-amber-200"
+              >
                 <i data-lucide="clock" class="w-3 h-3"></i> In Progress
               </span>
             </div>
-            <h3 class="text-2xl font-bold text-silverPink">VITALSIGN – Patient Risk Visualization</h3>
+            <h3 class="text-2xl font-bold text-silverPink">
+              VITALSIGN – Patient Risk Visualization
+            </h3>
             <p class="mt-2 text-slate-700 text-sm leading-relaxed font-medium">
-              Interactive dashboard concept for identifying rising-risk members from encounters, gaps, and utilization signals. Feature backlog and design system are scoped.
+              Interactive dashboard concept for identifying rising-risk members from encounters,
+              gaps, and utilization signals. Feature backlog and design system are scoped.
             </p>
             <div class="impact-metric">
-              <i data-lucide="users" class="w-4 h-4 inline"></i> 
+              <i data-lucide="users" class="w-4 h-4 inline"></i>
               Target: Monitor 10K+ high-risk patients
             </div>
-            <button disabled class="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-slate-200 text-slate-500 cursor-not-allowed opacity-60">
+            <button
+              disabled
+              class="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-slate-200 text-slate-500 cursor-not-allowed opacity-60"
+            >
               <i data-lucide="clock" class="w-4 h-4"></i> Preview coming soon
             </button>
           </div>
-          <div class="rounded-2xl overflow-hidden shadow-soft order-1 md:order-2 hover:shadow-xl transition-shadow">
-            <div class="aspect-video w-full bg-gradient-to-br from-silverPink/50 to-amber-100/30 grid place-items-center text-silverPink">
+          <div
+            class="rounded-2xl overflow-hidden shadow-soft order-1 md:order-2 hover:shadow-xl transition-shadow"
+          >
+            <div
+              class="aspect-video w-full bg-gradient-to-br from-silverPink/50 to-amber-100/30 grid place-items-center text-silverPink"
+            >
               <i data-lucide="activity" class="w-14 h-14 animate-pulse"></i>
             </div>
           </div>
@@ -515,22 +633,29 @@
       <!-- WHAT I DO -->
       <section id="whatido" class="mt-16 md:mt-20 observe-fade">
         <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-silverPink">What I Do</h2>
+          <h2
+            class="text-3xl md:text-4xl font-extrabold text-silverPink"
+          >
+            What I Do
+          </h2>
           <p class="mt-3 text-lg text-slate-700 max-w-3xl mx-auto font-medium">
-            I design data products that make healthcare simpler: clear models, useful dashboards, and automation that respects people and process.
+            I design data products that make healthcare simpler: clear models, useful dashboards,
+            and automation that respects people and process.
           </p>
         </div>
 
-        <!-- Grid of service cards -->
         <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <!-- Card 1: Data Modeling & SQL -->
           <div class="card p-6 bg-gradient-to-br from-white/40 to-alabaster/30">
             <div class="flex items-start gap-3 mb-4">
-              <i data-lucide="database" class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"></i>
+              <i
+                data-lucide="database"
+                class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"
+              ></i>
               <h3 class="text-xl font-bold text-silverPink">Data Modeling & SQL</h3>
             </div>
             <p class="text-slate-700 mb-4 leading-relaxed font-medium">
-              Clean, join, and model messy healthcare data into dependable datasets for analysis and reporting.
+              Clean, join, and model messy healthcare data into dependable datasets for analysis
+              and reporting.
             </p>
             <ul class="space-y-2 text-sm text-slate-600 font-medium">
               <li class="flex items-start gap-2">
@@ -544,14 +669,17 @@
             </ul>
           </div>
 
-          <!-- Card 2: Power BI & Storytelling -->
           <div class="card p-6 bg-gradient-to-br from-white/40 to-alabaster/30">
             <div class="flex items-start gap-3 mb-4">
-              <i data-lucide="bar-chart-3" class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"></i>
+              <i
+                data-lucide="bar-chart-3"
+                class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"
+              ></i>
               <h3 class="text-xl font-bold text-silverPink">Power BI & Storytelling</h3>
             </div>
             <p class="text-slate-700 mb-4 leading-relaxed font-medium">
-              Executive-ready dashboards that highlight the signal, not the noise, with clear KPIs and drill-downs.
+              Executive-ready dashboards that highlight the signal, not the noise, with clear KPIs
+              and drill-downs.
             </p>
             <ul class="space-y-2 text-sm text-slate-600 font-medium">
               <li class="flex items-start gap-2">
@@ -565,14 +693,17 @@
             </ul>
           </div>
 
-          <!-- Card 3: Automation & RPA -->
           <div class="card p-6 bg-gradient-to-br from-white/40 to-alabaster/30">
             <div class="flex items-start gap-3 mb-4">
-              <i data-lucide="zap" class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"></i>
+              <i
+                data-lucide="zap"
+                class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"
+              ></i>
               <h3 class="text-xl font-bold text-silverPink">Automation & RPA</h3>
             </div>
             <p class="text-slate-700 mb-4 leading-relaxed font-medium">
-              Turn repetitive work into reliable flows with Python and Power Automate—documented, auditable, and safe.
+              Turn repetitive work into reliable flows with Python and Power Automate—documented,
+              auditable, and safe.
             </p>
             <ul class="space-y-2 text-sm text-slate-600 font-medium">
               <li class="flex items-start gap-2">
@@ -586,14 +717,17 @@
             </ul>
           </div>
 
-          <!-- Card 4: Healthcare Ops & Compliance -->
           <div class="card p-6 bg-gradient-to-br from-white/40 to-alabaster/30">
             <div class="flex items-start gap-3 mb-4">
-              <i data-lucide="heart-pulse" class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"></i>
+              <i
+                data-lucide="heart-pulse"
+                class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"
+              ></i>
               <h3 class="text-xl font-bold text-silverPink">Healthcare Ops & Compliance</h3>
             </div>
             <p class="text-slate-700 mb-4 leading-relaxed font-medium">
-              BI grounded in payer/provider operations: claims, denials, HRA workflows, and member-first design.
+              BI grounded in payer/provider operations: claims, denials, HRA workflows, and
+              member-first design.
             </p>
             <ul class="space-y-2 text-sm text-slate-600 font-medium">
               <li class="flex items-start gap-2">
@@ -607,16 +741,25 @@
             </ul>
           </div>
 
-          <!-- Card 5: Communication & Enablement (full width) -->
-          <div class="card p-6 bg-gradient-to-br from-white/40 to-alabaster/30 md:col-span-2">
+          <div
+            class="card p-6 bg-gradient-to-br from-white/40 to-alabaster/30 md:col-span-2"
+          >
             <div class="flex items-start gap-3 mb-4">
-              <i data-lucide="message-square" class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"></i>
-              <h3 class="text-xl font-bold text-silverPink">Communication & Enablement</h3>
+              <i
+                data-lucide="message-square"
+                class="w-6 h-6 text-silverPink mt-1 flex-shrink-0"
+              ></i>
+              <h3 class="text-xl font-bold text-silverPink">
+                Communication & Enablement
+              </h3>
             </div>
             <p class="text-slate-700 mb-4 leading-relaxed font-medium">
-              Translate complex analytics into clear steps for operators, with living docs and training-ready visuals.
+              Translate complex analytics into clear steps for operators, with living docs and
+              training-ready visuals.
             </p>
-            <ul class="grid md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-slate-600 font-medium">
+            <ul
+              class="grid md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-slate-600 font-medium"
+            >
               <li class="flex items-start gap-2">
                 <span class="text-americanSilver mt-1">•</span>
                 <span>Runbooks & change logs</span>
@@ -633,110 +776,195 @@
       <div class="section-divider"></div>
 
       <!-- CONTACT -->
-      <section id="contact" class="mt-16 md:mt-24 mb-16 observe-fade">
+      <section
+        id="contact"
+        class="mt-16 md:mt-24 mb-16 observe-fade"
+      >
         <div class="card p-10 text-center">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-silverPink">Let's Connect</h2>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-silverPink">
+            Let's Connect
+          </h2>
           <p class="mt-3 text-slate-600 max-w-2xl mx-auto font-medium">
             Interested in collaborating or learning more about my work? I'd love to hear from you.
           </p>
-          <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="mailto:elujean@gmail.com" 
-               class="px-5 py-3 rounded-full bg-americanSilver text-slate-800 font-semibold shadow-soft hover:bg-[#B3D3BF] inline-flex items-center gap-2 btn-primary"
-               aria-label="Send email to Lujean El-Hadri">
+          <div
+            class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3"
+          >
+            <a
+              href="mailto:elujean@gmail.com"
+              class="px-5 py-3 rounded-full bg-americanSilver text-slate-800 font-semibold shadow-soft hover:bg-[#B3D3BF] inline-flex items-center gap-2 btn-primary"
+              aria-label="Send email to Lujean El-Hadri"
+            >
               <i data-lucide="mail" class="w-5 h-5"></i>Email Me
             </a>
-            <a href="https://www.linkedin.com/in/lujean-elhadri/"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="px-5 py-3 rounded-full border border-americanSilver/40 text-slate-700 font-semibold hover:bg-white inline-flex items-center gap-2 transition-all hover:shadow-md"
-               aria-label="Connect on LinkedIn">
+            <a
+              href="https://www.linkedin.com/in/lujean-elhadri/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-5 py-3 rounded-full border border-americanSilver/40 text-slate-700 font-semibold hover:bg-white inline-flex items-center gap-2 transition-all hover:shadow-md"
+              aria-label="Connect on LinkedIn"
+            >
               <i data-lucide="linkedin" class="w-5 h-5"></i>LinkedIn
             </a>
           </div>
         </div>
       </section>
 
-      <!-- Modal: SMS Case Study with tabs -->
-      <dialog id="smsModal"
-              aria-modal="true"
-              role="dialog"
-              aria-labelledby="smsModalTitle"
-              class="p-0 rounded-2xl w-11/12 md:w-3/4 max-w-4xl backdrop:bg-black/40">
+      <!-- Modal -->
+      <dialog
+        id="smsModal"
+        aria-modal="true"
+        role="dialog"
+        aria-labelledby="smsModalTitle"
+        class="p-0 rounded-2xl w-11/12 md:w-3/4 max-w-4xl backdrop:bg-black/40"
+      >
         <div class="card p-4 md:p-6 rounded-2xl">
           <div class="flex items-center justify-between">
-            <h3 id="smsModalTitle" class="text-xl font-semibold text-silverPink">SMS Outreach Pilot</h3>
-            <button class="p-2 hover:bg-slate-100 rounded-lg transition-colors" 
-                    onclick="closeSmsModal()" 
-                    aria-label="Close modal">
+            <h3
+              id="smsModalTitle"
+              class="text-xl font-semibold text-silverPink"
+            >
+              SMS Outreach Pilot
+            </h3>
+            <button
+              class="p-2 hover:bg-slate-100 rounded-lg transition-colors"
+              onclick="closeSmsModal()"
+              aria-label="Close modal"
+            >
               <i data-lucide="x" class="w-5 h-5"></i>
             </button>
           </div>
 
-          <!-- Tabs (Dashboard vs Notebook) -->
-          <div class="flex items-center gap-3 mb-4" role="tablist" aria-label="Case study tabs">
-            <button id="tab-dashboard" role="tab" aria-selected="true" aria-controls="panel-dashboard"
-                    class="px-4 py-2 rounded-md bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition-colors">
+          <!-- Tabs -->
+          <div
+            class="flex items-center gap-3 mb-4"
+            role="tablist"
+            aria-label="Case study tabs"
+          >
+            <button
+              id="tab-dashboard"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-dashboard"
+              class="px-4 py-2 rounded-md bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700 transition-colors"
+            >
               Dashboard
             </button>
-            <button id="tab-notebook" role="tab" aria-selected="false" aria-controls="panel-notebook"
-                    class="px-4 py-2 rounded-md bg-white/70 text-indigo-700 font-semibold border border-indigo-200 hover:bg-white transition-colors">
+            <button
+              id="tab-notebook"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-notebook"
+              class="px-4 py-2 rounded-md bg-white/70 text-indigo-700 font-semibold border border-indigo-200 hover:bg-white transition-colors"
+            >
               Notebook
             </button>
-            <a href="assets/sms-outreach-dashboard.png"
-               download
-               class="ml-auto px-4 py-2 rounded-md bg-slate-100 text-slate-800 border border-slate-300 hover:bg-white transition-colors"
-               title="Download snapshot"
-               aria-label="Download dashboard snapshot">
-               <i data-lucide="download" class="w-4 h-4 inline"></i>
+            <a
+              href="assets/sms-outreach-dashboard.png"
+              download
+              class="ml-auto px-4 py-2 rounded-md bg-slate-100 text-slate-800 border border-slate-300 hover:bg-white transition-colors"
+              title="Download snapshot"
+              aria-label="Download dashboard snapshot"
+            >
+              <i data-lucide="download" class="w-4 h-4 inline"></i>
             </a>
           </div>
 
-          <!-- Panel: DASHBOARD (static first, then interactive iframe) -->
-          <div id="panel-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
-            <!-- Static snapshot on top -->
-            <div class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft">
-              <img src="assets/sms-outreach-dashboard.png" alt="SMS Outreach Dashboard snapshot" class="w-full h-auto" loading="lazy" />
+          <!-- Panel: DASHBOARD -->
+          <div
+            id="panel-dashboard"
+            role="tabpanel"
+            aria-labelledby="tab-dashboard"
+          >
+            <div
+              class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft"
+            >
+              <img
+                src="assets/sms-outreach-dashboard.png"
+                alt="SMS Outreach Dashboard snapshot"
+                class="w-full h-auto"
+                loading="lazy"
+              />
             </div>
-            <p class="text-xs mt-2 text-gray-600 text-center">
-              Static snapshot for quick review. Below: interactive Power BI embed.
+
+            <p
+              class="text-[12px] mt-2 text-slate-600 text-center leading-relaxed font-medium"
+            >
+              Automated SMS outreach + risk-based scoring to drive HRA completion in D-SNP
+              members. Dashboard tracks outreach tiers, engagement lift, and completion movement.
+            </p>
+            <p class="text-[11px] mt-1 text-gray-500 text-center">
+              Below: secure Power BI embed. If you're not authorized, you may just see an empty
+              frame.
             </p>
 
-            <!-- Interactive Power BI iframe with skeleton loader -->
-            <div class="mt-4 relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg border border-gray-300 ring-4 ring-indigo-200/50">
-              <!-- Loader overlay (blurred snapshot + pulse) -->
-              <div id="biLoader" class="absolute inset-0 grid place-items-center bg-white">
-                <div class="w-5/6 max-w-3xl rounded-md overflow-hidden border border-gray-200 shadow-soft">
-                  <img src="assets/sms-outreach-dashboard.png" alt="Loading Power BI…" class="w-full h-auto blur-sm" />
+            <div
+              class="mt-4 relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg border border-gray-300 ring-4 ring-indigo-200/50"
+            >
+              <div
+                id="biLoader"
+                class="absolute inset-0 grid place-items-center bg-white"
+              >
+                <div
+                  class="w-5/6 max-w-3xl rounded-md overflow-hidden border border-gray-200 shadow-soft"
+                >
+                  <img
+                    src="assets/sms-outreach-dashboard.png"
+                    alt="Loading Power BI…"
+                    class="w-full h-auto blur-sm"
+                  />
                 </div>
-                <div class="mt-3 text-sm text-gray-600 animate-pulse font-medium">Loading interactive report...</div>
-                <div class="mt-2 w-48 h-1 bg-gray-200 rounded-full overflow-hidden relative">
+                <div
+                  class="mt-3 text-sm text-gray-600 animate-pulse font-medium"
+                >
+                  Loading interactive report...
+                </div>
+                <div
+                  class="mt-2 w-48 h-1 bg-gray-200 rounded-full overflow-hidden relative"
+                >
                   <div class="loading-bar"></div>
                 </div>
               </div>
 
-              <!-- Iframe fades in when ready -->
-              <iframe id="biFrame"
-                      title="SMS Outreach Dashboard Official"
-                      src="https://app.powerbi.com/reportEmbed?reportId=ccf37a01-b06a-48d0-aba7-b2c0039d3cfe&autoAuth=true&ctid=be337e90-9c3f-400f-8844-59f0503ac783"
-                      frameborder="0"
-                      allowfullscreen
-                      loading="lazy"
-                      class="absolute top-0 left-0 w-full h-full rounded-md opacity-0 transition-opacity duration-500">
+              <iframe
+                id="biFrame"
+                title="SMS Outreach Dashboard Official"
+                src="https://app.powerbi.com/reportEmbed?reportId=ccf37a01-b06a-48d0-aba7-b2c0039d3cfe&autoAuth=true&ctid=be337e90-9c3f-400f-8844-59f0503ac783"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                class="absolute top-0 left-0 w-full h-full rounded-md opacity-0 transition-opacity duration-500"
+              >
               </iframe>
             </div>
           </div>
 
-          <!-- Panel: NOTEBOOK (Jupyter export) -->
-          <div id="panel-notebook" role="tabpanel" aria-labelledby="tab-notebook" class="hidden">
-            <div class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft">
-              <iframe src="documents/hra_sms_pilot_analysis.html" 
-                      class="w-full" 
-                      height="520" 
-                      title="Jupyter Notebook Export"
-                      frameborder="0"></iframe>
+          <!-- Panel: NOTEBOOK -->
+          <div
+            id="panel-notebook"
+            role="tabpanel"
+            aria-labelledby="tab-notebook"
+            class="hidden"
+          >
+            <div
+              class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft"
+            >
+              <div
+                class="p-4 text-[12px] text-slate-700 leading-relaxed font-medium text-center"
+              >
+                This notebook walks through the scoring logic, outreach tiers, and lift
+                calculation used in the pilot.
+              </div>
+              <iframe
+                src="documents/hra_sms_pilot_analysis.html"
+                class="w-full"
+                height="520"
+                title="Jupyter Notebook Export"
+                loading="lazy"
+              ></iframe>
             </div>
-            <p class="text-xs mt-2 text-gray-600 text-center">
-              Note: This notebook export reflects the latest uploaded HTML in <code>/documents</code>. Share the updated version when ready and I'll swap it in.
+            <p class="text-[11px] mt-2 text-gray-600 text-center">
+              Public version is redacted for privacy. No real member data is exposed.
             </p>
           </div>
         </div>
@@ -744,10 +972,12 @@
     </main>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" 
-            id="backToTop" 
-            aria-label="Back to top"
-            title="Back to top">
+    <button
+      class="back-to-top"
+      id="backToTop"
+      aria-label="Back to top"
+      title="Back to top"
+    >
       <i data-lucide="arrow-up" class="w-5 h-5 text-slate-900"></i>
     </button>
 
@@ -758,11 +988,15 @@
 
     <!-- SCRIPTS -->
     <script>
-      // ---- Icons (run once after DOM is ready)
-      document.addEventListener('DOMContentLoaded', () => {
-        if (window.lucide && typeof lucide.createIcons === 'function') {
-          lucide.createIcons();
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.lucide && typeof lucide.createIcons === "function") {
+          try {
+            lucide.createIcons();
+          } catch (e) {
+            console.warn("Lucide init error", e);
+          }
         }
+
         initHeaderShadow();
         initTabs();
         initPowerBILoader();
@@ -772,93 +1006,82 @@
         initBackToTop();
       });
 
-      // ---- Current year in footer
-      document.getElementById('y').textContent = new Date().getFullYear();
+      document.getElementById("y").textContent = new Date().getFullYear();
 
-      // =========================
-      // 1) Sticky header shadow
-      // =========================
       function initHeaderShadow() {
-        const header = document.getElementById('siteHeader');
+        const header = document.getElementById("siteHeader");
         const apply = () => {
           if (window.scrollY > 10) {
-            header.classList.add('shadow-nav', 'bg-white/70', 'backdrop-blur');
+            header.classList.add("shadow-nav", "bg-white/70", "backdrop-blur");
           } else {
-            header.classList.remove('shadow-nav', 'bg-white/70', 'backdrop-blur');
+            header.classList.remove(
+              "shadow-nav",
+              "bg-white/70",
+              "backdrop-blur"
+            );
           }
         };
         apply();
-        window.addEventListener('scroll', apply, { passive: true });
+        window.addEventListener("scroll", apply, { passive: true });
       }
 
-      // =========================
-      // 2) Mobile menu
-      // =========================
       function initMobileMenu() {
-        const menuBtn = document.getElementById('mobileMenuBtn');
-        const menu = document.getElementById('mobileMenu');
-        const links = document.querySelectorAll('.mobile-link');
-        
-        menuBtn.addEventListener('click', () => {
-          const isOpen = menu.classList.contains('open');
-          menu.classList.toggle('open');
-          menuBtn.setAttribute('aria-expanded', !isOpen);
-          
-          // Change icon
-          const icon = menuBtn.querySelector('i');
+        const menuBtn = document.getElementById("mobileMenuBtn");
+        const menu = document.getElementById("mobileMenu");
+        const links = document.querySelectorAll(".mobile-link");
+
+        menuBtn.addEventListener("click", () => {
+          const isOpen = menu.classList.contains("open");
+          menu.classList.toggle("open");
+          menuBtn.setAttribute("aria-expanded", !isOpen);
+
+          const icon = menuBtn.querySelector("i");
           if (icon) {
-            icon.setAttribute('data-lucide', isOpen ? 'menu' : 'x');
+            icon.setAttribute("data-lucide", isOpen ? "menu" : "x");
             if (window.lucide) lucide.createIcons();
           }
         });
 
-        // Close menu when clicking a link
-        links.forEach(link => {
-          link.addEventListener('click', () => {
-            menu.classList.remove('open');
-            menuBtn.setAttribute('aria-expanded', 'false');
-            const icon = menuBtn.querySelector('i');
+        links.forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.classList.remove("open");
+            menuBtn.setAttribute("aria-expanded", "false");
+            const icon = menuBtn.querySelector("i");
             if (icon) {
-              icon.setAttribute('data-lucide', 'menu');
+              icon.setAttribute("data-lucide", "menu");
               if (window.lucide) lucide.createIcons();
             }
           });
         });
       }
 
-      // =========================
-      // 3) Intersection Observer for fade-in animations
-      // =========================
       function initObserver() {
         const options = {
           threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
+          rootMargin: "0px 0px -50px 0px"
         };
 
         const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
+              entry.target.classList.add("visible");
               observer.unobserve(entry.target);
             }
           });
         }, options);
 
-        document.querySelectorAll('.observe-fade').forEach(el => {
+        document.querySelectorAll(".observe-fade").forEach((el) => {
           observer.observe(el);
         });
       }
 
-      // =========================
-      // 4) Animated counters
-      // =========================
       function initCounters() {
-        const counters = document.querySelectorAll('.counter');
+        const counters = document.querySelectorAll(".counter");
         const speed = 200;
         let started = false;
 
         const animateCounter = (counter) => {
-          const target = +counter.getAttribute('data-target');
+          const target = +counter.getAttribute("data-target");
           const increment = target / speed;
           let current = 0;
 
@@ -874,72 +1097,74 @@
           updateCounter();
         };
 
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting && !started) {
-              started = true;
-              counters.forEach(counter => animateCounter(counter));
-              observer.disconnect();
-            }
-          });
-        }, { threshold: 0.5 });
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && !started) {
+                started = true;
+                counters.forEach((counter) => animateCounter(counter));
+                observer.disconnect();
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
 
-        const heroSection = document.getElementById('home');
+        const heroSection = document.getElementById("home");
         if (heroSection) observer.observe(heroSection);
       }
 
-      // =========================
-      // 5) Back to top button
-      // =========================
       function initBackToTop() {
-        const btn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 300) {
-            btn.classList.add('visible');
-          } else {
-            btn.classList.remove('visible');
-          }
-        }, { passive: true });
+        const btn = document.getElementById("backToTop");
 
-        btn.addEventListener('click', () => {
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (window.scrollY > 300) {
+              btn.classList.add("visible");
+            } else {
+              btn.classList.remove("visible");
+            }
+          },
+          { passive: true }
+        );
+
+        btn.addEventListener("click", () => {
           window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: "smooth"
           });
         });
       }
 
-      // =========================
-      // 6) Modal: open/close + focus trap + ESC
-      // =========================
-      const smsModal = document.getElementById('smsModal');
+      const smsModal = document.getElementById("smsModal");
       let lastFocused = null;
 
       const FOCUSABLE = [
-        'a[href]',
-        'button:not([disabled])',
-        'textarea:not([disabled])',
+        "a[href]",
+        "button:not([disabled])",
+        "textarea:not([disabled])",
         'input[type="text"]:not([disabled])',
         'input[type="email"]:not([disabled])',
         'input[type="search"]:not([disabled])',
         'input[type="radio"]:not([disabled])',
         'input[type="checkbox"]:not([disabled])',
-        'select:not([disabled])',
-        '[tabindex]:not([tabindex="-1"])'
-      ].join(',');
+        "select:not([disabled])",
+        "[tabindex]:not([tabindex='-1'])"
+      ].join(",");
 
       function getFocusable(container) {
-        return Array.from(container.querySelectorAll(FOCUSABLE))
-          .filter(el => el.offsetParent !== null || el === container);
+        return Array.from(container.querySelectorAll(FOCUSABLE)).filter(
+          (el) => el.offsetParent !== null || el === container
+        );
       }
 
       function openSmsModal() {
         if (!smsModal.open) {
           lastFocused = document.activeElement;
           smsModal.showModal();
-          smsModal.addEventListener('click', backdropClose);
-          smsModal.addEventListener('keydown', trapKeys);
+          smsModal.addEventListener("click", backdropClose);
+          smsModal.addEventListener("keydown", trapKeys);
           const first = getFocusable(smsModal)[0];
           if (first) first.focus();
         }
@@ -948,34 +1173,33 @@
       function closeSmsModal() {
         if (smsModal.open) {
           smsModal.close();
-          smsModal.removeEventListener('click', backdropClose);
-          smsModal.removeEventListener('keydown', trapKeys);
-          if (lastFocused && typeof lastFocused.focus === 'function') {
+          smsModal.removeEventListener("click", backdropClose);
+          smsModal.removeEventListener("keydown", trapKeys);
+          if (lastFocused && typeof lastFocused.focus === "function") {
             lastFocused.focus();
           }
         }
       }
 
       function backdropClose(e) {
-        // Only close if the click is directly on the dialog backdrop, not on any child elements
         if (e.target === smsModal) {
           closeSmsModal();
         }
       }
 
       function trapKeys(e) {
-        if (e.key === 'Escape') {
+        if (e.key === "Escape") {
           e.preventDefault();
           closeSmsModal();
           return;
         }
-        if (e.key !== 'Tab') return;
+        if (e.key !== "Tab") return;
 
         const focusables = getFocusable(smsModal);
         if (!focusables.length) return;
 
         const first = focusables[0];
-        const last  = focusables[focusables.length - 1];
+        const last = focusables[focusables.length - 1];
         const active = document.activeElement;
 
         if (e.shiftKey) {
@@ -991,94 +1215,93 @@
         }
       }
 
-      window.openSmsModal  = openSmsModal;
+      window.openSmsModal = openSmsModal;
       window.closeSmsModal = closeSmsModal;
 
-      // =========================
-      // 7) Tabs logic (Dashboard vs Notebook) + arrow-key nav
-      // =========================
       function initTabs() {
-        const tabDash   = document.getElementById('tab-dashboard');
-        const tabNote   = document.getElementById('tab-notebook');
-        const panelDash = document.getElementById('panel-dashboard');
-        const panelNote = document.getElementById('panel-notebook');
+        const tabDash = document.getElementById("tab-dashboard");
+        const tabNote = document.getElementById("tab-notebook");
+        const panelDash = document.getElementById("panel-dashboard");
+        const panelNote = document.getElementById("panel-notebook");
         if (!tabDash || !tabNote || !panelDash || !panelNote) return;
 
         function activate(which) {
-          const isDash = which === 'dash';
-          tabDash.setAttribute('aria-selected', isDash);
-          tabNote.setAttribute('aria-selected', !isDash);
+          const isDash = which === "dash";
+          tabDash.setAttribute("aria-selected", isDash);
+          tabNote.setAttribute("aria-selected", !isDash);
 
-          panelDash.classList.toggle('hidden', !isDash);
-          panelNote.classList.toggle('hidden', isDash);
-          
-          // Force iframe to load when notebook tab is activated
+          panelDash.classList.toggle("hidden", !isDash);
+          panelNote.classList.toggle("hidden", isDash);
+
+          // lazy-load notebook iframe on first open
           if (!isDash) {
-            const iframe = panelNote.querySelector('iframe');
+            const iframe = panelNote.querySelector("iframe");
             if (iframe && !iframe.dataset.loaded) {
-              iframe.dataset.loaded = 'true';
-              // Reload src to ensure it loads
-              const src = iframe.getAttribute('src');
-              iframe.setAttribute('src', src);
+              iframe.dataset.loaded = "true";
+              const src = iframe.getAttribute("src");
+              iframe.setAttribute("src", src);
             }
           }
 
-          tabDash.classList.toggle('bg-indigo-600', isDash);
-          tabDash.classList.toggle('text-white', isDash);
-          tabDash.classList.toggle('bg-white/70', !isDash);
-          tabDash.classList.toggle('text-indigo-700', !isDash);
-          tabDash.classList.toggle('border', !isDash);
-          tabDash.classList.toggle('border-indigo-200', !isDash);
+          tabDash.classList.toggle("bg-indigo-600", isDash);
+          tabDash.classList.toggle("text-white", isDash);
+          tabDash.classList.toggle("bg-white/70", !isDash);
+          tabDash.classList.toggle("text-indigo-700", !isDash);
+          tabDash.classList.toggle("border", !isDash);
+          tabDash.classList.toggle("border-indigo-200", !isDash);
 
-          tabNote.classList.toggle('bg-indigo-600', !isDash);
-          tabNote.classList.toggle('text-white', !isDash);
-          tabNote.classList.toggle('bg-white/70', isDash);
-          tabNote.classList.toggle('text-indigo-700', isDash);
-          tabNote.classList.toggle('border', isDash);
-          tabNote.classList.toggle('border-indigo-200', isDash);
+          tabNote.classList.toggle("bg-indigo-600", !isDash);
+          tabNote.classList.toggle("text-white", !isDash);
+          tabNote.classList.toggle("bg-white/70", isDash);
+          tabNote.classList.toggle("text-indigo-700", isDash);
+          tabNote.classList.toggle("border", isDash);
+          tabNote.classList.toggle("border-indigo-200", isDash);
         }
 
-        tabDash.addEventListener('click', () => activate('dash'));
-        tabNote.addEventListener('click', () => activate('note'));
+        tabDash.addEventListener("click", () => activate("dash"));
+        tabNote.addEventListener("click", () => activate("note"));
 
-        [tabDash, tabNote].forEach(btn => {
-          btn.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        [tabDash, tabNote].forEach((btn) => {
+          btn.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
               e.preventDefault();
-              const next = (e.currentTarget === tabDash) ? tabNote : tabDash;
+              const next = e.currentTarget === tabDash ? tabNote : tabDash;
               next.focus();
               if (next === tabDash) {
-                activate('dash');
+                activate("dash");
               } else {
-                activate('note');
+                activate("note");
               }
             }
           });
         });
 
-        activate('dash');
+        activate("dash");
       }
 
-      // =========================
-      // 8) Power BI skeleton loader
-      // =========================
       function initPowerBILoader() {
-        const iframe = document.getElementById('biFrame');
-        const loader = document.getElementById('biLoader');
+        const iframe = document.getElementById("biFrame");
+        const loader = document.getElementById("biLoader");
         if (!iframe || !loader) return;
 
-        iframe.addEventListener('load', () => {
-          iframe.classList.remove('opacity-0');
-          setTimeout(() => loader.classList.add('hidden'), 250);
-        }, { once: true });
+        iframe.addEventListener(
+          "load",
+          () => {
+            iframe.classList.remove("opacity-0");
+            setTimeout(() => loader.classList.add("hidden"), 250);
+          },
+          { once: true }
+        );
 
+        // safety fallback
         setTimeout(() => {
-          if (iframe.classList.contains('opacity-0')) {
-            iframe.classList.remove('opacity-0');
-            loader.classList.add('hidden');
-          }
-        }, 7000);
+          loader.classList.add("hidden");
+          iframe.classList.remove("opacity-0");
+        }, 2000);
       }
     </script>
   </body>
 </html>
+
+
+

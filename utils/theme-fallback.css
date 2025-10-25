@@ -1,0 +1,87 @@
+/* =============================
+   Theme Fallback Styles
+   For GitHub Pages render or CDN load issues
+   ============================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  background: linear-gradient(135deg, #F7FFF6 0%, #E8F5E9 50%, #C6DFCD 100%);
+  color: #2d3748;
+  margin: 0;
+  padding: 0;
+}
+
+/* Card / Glassmorphism */
+.card {
+  background: rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Section headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  color: #C9A8A0; /* silverPink */
+}
+
+/* Links */
+a {
+  color: #869F9F; /* morningBlue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #C9A8A0;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #C6DFCD; /* americanSilver */
+  color: #2d3748;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #B3D3BF;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(198, 223, 205, 0.6);
+}
+
+/* Section dividers */
+.section-divider {
+  margin: 4rem auto;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C6DFCD, transparent);
+  border-radius: 2px;
+}
+
+/* Navigation shadow on scroll */
+header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Hero text styling */
+#heroName {
+  color: #869F9F;
+  text-shadow: 0 2px 10px rgba(134, 159, 159, 0.15);
+}
