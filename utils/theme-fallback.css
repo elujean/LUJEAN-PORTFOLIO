@@ -97,19 +97,18 @@ dialog#smsModal {
 
   padding: 0;
   border: 0;
-  background: transparent;      /* dialog chrome transparent, we show our own card */
+  background: transparent;      /* dialog backdrop chrome transparent */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* The actual "card" container inside the dialog */
+/* The actual visible card container inside the dialog */
 dialog#smsModal .modal-shell {
-  /* use your glass card look, but also stretch */
-  background: rgba(255,255,255,0.34);
+  background: rgba(255, 255, 255, 0.34);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 1rem;
   box-shadow: 0 8px 30px rgba(0,0,0,0.06);
 
@@ -119,11 +118,11 @@ dialog#smsModal .modal-shell {
 
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* header fixed, body scrolls */
+  overflow: hidden; /* header stays fixed; body scrolls */
   padding: 1rem;
 }
 
-/* Header row (title/close/download) shouldn't scroll */
+/* Header (title / tabs / close) */
 dialog#smsModal .modal-header {
   flex-shrink: 0;
   display: flex;
@@ -131,7 +130,7 @@ dialog#smsModal .modal-header {
   gap: 1rem;
 }
 
-/* Tabs row */
+/* The tab row under the title */
 dialog#smsModal .tab-row {
   display: flex;
   flex-wrap: wrap;
@@ -139,10 +138,10 @@ dialog#smsModal .tab-row {
   gap: 0.75rem;
 }
 
-/* Scrollable body (panels) */
+/* Scrollable area with the dashboard / notebook panels */
 dialog#smsModal .modal-body {
   flex: 1 1 auto;
-  min-height: 0;           /* lets flexbox allow scrolling */
+  min-height: 0;
   overflow-y: auto;
   border-radius: 0.5rem;
   background: rgba(255,255,255,0.6);
@@ -151,7 +150,7 @@ dialog#smsModal .modal-body {
   padding: 1rem;
 }
 
-/* Force iframes to be tall inside panels */
+/* Make iframes tall enough to feel real */
 #panel-dashboard iframe,
 #panel-notebook iframe {
   width: 100%;
@@ -160,12 +159,12 @@ dialog#smsModal .modal-body {
   border-radius: 0.5rem;
 }
 
-/* loader box in dashboard panel */
+/* Loader panel background */
 #biLoader {
   background: white;
 }
 
-/* mobile tweaks */
+/* Mobile tweaks */
 @media (max-width: 768px) {
   dialog#smsModal {
     width: 95vw;
@@ -178,3 +177,4 @@ dialog#smsModal .modal-body {
     height: 55vh;
   }
 }
+
