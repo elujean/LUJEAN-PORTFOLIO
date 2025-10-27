@@ -1041,7 +1041,7 @@
       </dialog>
       <!-- /MODAL -->
 
-      <!-- ========================= -->
+<!-- ========================= -->
 <!-- MODAL: AURA CASE STUDY   -->
 <!-- ========================= -->
 <dialog
@@ -1053,8 +1053,8 @@
   style="
     width:90vw;
     max-width:1200px;
-    height:85vh;
-    max-height:85vh;
+    height:95vh;
+    max-height:95vh;
     border:0;
     padding:0;
     background:transparent;
@@ -1069,7 +1069,7 @@
     style="
       width:100%;
       height:100%;
-      max-height:85vh;
+      max-height:95vh;
       display:flex;
       flex-direction:column;
       box-shadow:0 8px 30px rgba(0,0,0,.06);
@@ -1143,7 +1143,7 @@
         flex:1 1 auto;
         min-height:0;
         overflow-y:auto;
-        padding:1rem;
+        padding:0.5rem;
         background:transparent;
       "
     >
@@ -1182,46 +1182,45 @@
         </div>
       </div>
 
-     <!-- PANEL: NOTEBOOK -->
-<!-- PANEL: NOTEBOOK -->
-<div
-  id="aura-panel-notebook"
-  role="tabpanel"
-  aria-labelledby="aura-tab-notebook"
-  class="hidden"
->
-  <!-- iframe wrapper -->
-  <div
-    class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft"
-    style="
-      /* take up more of modal vertically */
-      height: 70vh;
-      max-height: 70vh;
-      display: flex;
-      flex-direction: column;
-    "
-  >
-    <!-- iframe itself -->
-    <iframe
-      src="AURA/AURA%20Storyboard.html"
-      title="AURA Notebook Export"
-      loading="lazy"
-      style="
-        border: 0;
-        width: 100%;
-        flex: 1 1 auto;
-        min-height: 0;
-      "
-    ></iframe>
+      <!-- PANEL: NOTEBOOK -->
+      <div
+        id="aura-panel-notebook"
+        role="tabpanel"
+        aria-labelledby="aura-tab-notebook"
+        class="hidden"
+      >
+        <div
+          class="rounded-lg overflow-hidden border border-gray-300 bg-white shadow-soft"
+          style="
+            height: 70vh;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <iframe
+            src="AURA/AURA%20Storyboard.html"
+            title="AURA Notebook Export"
+            loading="lazy"
+            style="
+              border: 0;
+              width: 100%;
+              flex: 1 1 auto;
+              min-height: 0;
+            "
+          ></iframe>
+        </div>
+
+        <p class="text-[11px] mt-2 text-gray-600 text-center">
+          All content is synthetic and models real denial-prevention patterns
+          (eligibility, auth, network, telehealth, timely filing, documentation).
+        </p>
+      </div>
+    </div>
   </div>
-
-  <p class="text-[11px] mt-2 text-gray-600 text-center">
-    All content is synthetic and models real denial-prevention patterns
-    (eligibility, auth, network, telehealth, timely filing, documentation).
-  </p>
-</div>
-
 </dialog>
+<!-- /AURA MODAL -->
+
 <!-- /AURA MODAL -->
 
     </main>
@@ -1255,6 +1254,7 @@
 
         initHeaderShadow();
         initTabs();
+        initAuraTabs();
         initPowerBILoader();
         initMobileMenu();
         initObserver();
@@ -1712,17 +1712,6 @@ function initAuraTabs() {
 document.addEventListener("DOMContentLoaded", () => {
   initHeaderShadow();
   initTabs();        // this was for SMS
-  initPowerBILoader();
-  initMobileMenu();
-  initObserver();
-  initCounters();
-  initBackToTop();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  initHeaderShadow();
-  initTabs();        // existing SMS tab init
-  initAuraTabs();    // NEW: for AURA modal tabs
   initPowerBILoader();
   initMobileMenu();
   initObserver();
